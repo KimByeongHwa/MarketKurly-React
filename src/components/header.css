@@ -1,0 +1,202 @@
+header{
+    top: 0;
+    margin-top: 10px;
+    box-shadow: rgb(0 0 0 / 7%) 0px 3px 4px 0px;
+}
+header > .inner{
+    height: 156px;
+}
+header .header-top{
+    height: 35px;
+    width: 100%;
+    position: relative;
+}
+header .header-top ul.user-bar{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+header .header-top ul.user-bar li{
+    cursor: pointer;
+    list-style: none;
+}
+header .header-top ul.user-bar li:first-child > a{
+    color: rgb(95, 0, 128);
+}
+header .header-top ul.user-bar li::before{
+    content: "";
+    display: block;
+    width: 1px;
+    height: 13px;
+    background-color: rgb(217, 217, 217);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+header .header-top ul.user-bar li:first-child::before{
+    display: none;
+}
+header .header-top ul.user-bar li a{
+    padding: 0 12px;
+    font-size: 12px;
+}
+header .header-middle{
+    height: 63px;
+    width: 100%;
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+header .header-middle .logo{
+    position: relative;
+}
+header .header-middle .logo img{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+header .header-middle .market-beauty{
+    position: absolute;
+    left: 82px;
+    height: 20px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+header .header-middle .market-beauty > button{
+    font-family: "Noto Sans KR", "malgun gothic", AppleGothic, dotum, sans-serif;
+}
+header .header-middle .market-beauty .market-mode{
+    flex-shrink: 0;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: rgb(95, 0, 128);
+    cursor: pointer;
+    margin-left: 20px;
+}
+header .header-middle .market-beauty .beauty-mode{
+    flex-shrink: 0;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: rgb(181, 181, 181);
+    cursor: pointer;
+    position: relative;
+}
+/* header .header-middle .market-beauty .beauty-mode::before{   구분선이 padding값에 따라 움직이지 않고 글자에 붙어있음.
+    content: "";
+    display: block;
+    width: 1px;
+    height: 13px;
+    background-color: rgb(217, 217, 217);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+} */
+header .header-middle .market-beauty .beauty-mode:hover{
+    font-weight: 500;
+    color: rgb(95, 0, 128);
+}
+header .header-middle .search-bar{
+    position: absolute;
+    left: 325px;
+}
+header .header-middle .search-bar > input{
+    width: 370px;
+    height: 40px;
+    border : 1px solid rgb(95, 0, 128);
+    border-radius: 6px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgb(247 247 247) 0px 0px 0px 1px inset;
+    padding: 0 13px;
+}
+header .header-middle .search-bar > input:focus{
+    outline-style: none;
+}
+header .header-middle .search-bar > input::placeholder{
+    font-family: "Noto Sans KR", "malgun gothic", AppleGothic, dotum, sans-serif;
+    font-size: 16px;
+    letter-spacing: -0.33px;
+    color: rgb(153, 153, 153)
+}
+header .header-middle .search-bar > img{
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+header .header-middle .user-tool{
+    position: absolute;
+    right: 0;
+}
+header .header-middle .user-tool img:first-child{
+    margin-right: 20px;
+}
+header .header-middle .user-tool img:last-child{
+    margin-left: 20px;
+}
+header .header-bottom{
+    height: 56px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between; /*가로 정렬*/
+    align-items: center; /*세로 정렬*/
+}
+header .header-bottom .category{
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: -0.3px;
+    color: rgb(51, 51, 51);
+}
+header .header-bottom .category > img{
+    margin-right: 14px;
+}
+header .header-bottom .nav-menu{
+    width: 500px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: -0.3px;
+    color: rgb(51, 51, 51);
+}
+header .header-bottom .nav-menu .menu{
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+}
+header .header-bottom .nav-menu .menu li{
+   
+}
+header .header-bottom .nav-menu .menu li a:hover{
+    color: rgb(95, 0, 128);
+    border-bottom: solid 1px rgb(95, 0, 128);
+}
+header .header-bottom .delivery-information{
+    border: 1px solid rgb(238, 238, 238);
+    border-radius: 18px;
+    padding: 6px 12px;
+    color: rgb(102, 102, 102);
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: -0.32px;
+}
+header .header-bottom .delivery-information a{
+    font-weight: 500;
+    color: rgb(102, 102, 102);
+}
+header .header-bottom .delivery-information a span{
+    color: rgb(95, 0, 128);
+}
