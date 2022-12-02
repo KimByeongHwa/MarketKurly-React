@@ -1,0 +1,25 @@
+/* eslint-disable */
+.ProductList{
+    width: 1050px;
+    margin: 0px auto;
+    padding: 40px 0px;
+    border : 1px solid black;
+}
+
+.titleLine{
+    margin-bottom: 27px;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    border: 1px solid red;
+}
+
+.productLine{
+    position: relative;
+    width: 1050px;
+    margin: 0px auto;
+    border: 1px solid blue;
+}

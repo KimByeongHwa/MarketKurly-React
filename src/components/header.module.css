@@ -25,6 +25,16 @@
     color: rgb(95, 0, 128);
 }
 
+.underImg{
+    width: 8px;
+    height: 5px;
+    background-image: url(https://res.kurly.com/pc/ico/1908/ico_down_16x10.png);
+    background-size: cover;
+    background-position: center center;
+    display: inline-block;
+    margin-left: 5px;
+    margin-bottom: 1px;
+}
 
 /* MIDDLE */
 .middle{
@@ -78,12 +88,12 @@ button:active{
 
 .searchInput{
     width: 370px;
-    height: 50px;
+    height: 45px;
     border : 1px solid rgb(95, 0, 128);
     border-radius: 6px;
     background-color: rgb(255, 255, 255);
     box-shadow: rgb(247 247 247) 0px 0px 0px 1px inset;
-    padding: 0 13px;
+    padding: 0 15px;
 }
 
 .searchInput:focus{
@@ -174,13 +184,16 @@ button:active{
 
 .menuList{
     display: flex;
-    -webkit-box-pack: center;
     justify-content: center;
     width: 150px;
     height: 55px;
-    padding-top: 18px;
+    padding-top: 20px;
     line-height: 20px;
     text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgb(51, 51, 51);
+    cursor: pointer;
 }
 
 .delivery{

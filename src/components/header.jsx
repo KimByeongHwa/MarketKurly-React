@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './header.module.css';
@@ -10,7 +11,7 @@ function Header(props) {
             <Bar />
             <a href="">로그인</a>
             <Bar />
-            <a href="">고객센터 ▼</a>
+            <a href="">고객센터<span className={styles.underImg} /></a>
         </div>
         <div className={styles.middle}>
             <div className={styles.logoContainer}>
