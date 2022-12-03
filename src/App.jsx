@@ -45,8 +45,7 @@ function App() {
       <BrowserRouter>
         <GlobalStyle />
         <Header />
-        <ProductCard name="소갈비" price="500" />
-        {/* <ProductList /> */}
+        <ProductList title="이 상품 어때요?" />
       </BrowserRouter>
     </>
   );
