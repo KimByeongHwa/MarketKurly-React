@@ -5,7 +5,7 @@ import { Reset } from 'styled-reset';
 import { createGlobalStyle } from 'styled-components';
 import Header from './components/header.jsx'
 import ProductList from './components/productlist.jsx';
-import ProductCard from './components/productcard.jsx';
+import MainBanner from './components/mainbanner.jsx';
 
 // 궁금한 점 : GlobalStyle에서 html element 말고 사용자 정의태그는 사용 불가능한지?
 const GlobalStyle = createGlobalStyle`
@@ -45,6 +45,7 @@ function App() {
       <BrowserRouter>
         <GlobalStyle />
         <Header />
+        <MainBanner />
         <ProductList title="이 상품 어때요?" />
       </BrowserRouter>
     </>

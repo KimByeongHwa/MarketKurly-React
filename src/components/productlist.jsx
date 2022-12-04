@@ -18,7 +18,7 @@ function ProductList(props) {
                 setProducts(data); // products에 product.json의 data가 들어간다.
             });
     } ,[])
-    console.log(products);
+    // console.log(products);
 
     return (
         <div className={styles.ProductList}>
@@ -32,7 +32,6 @@ function ProductList(props) {
                 spaceBetween={18}
                 navigation={true}
                 modules={[Navigation]}
-                className='mySwiper'
              >
                 <div className={styles.productContainer}>
                     { products.map( product =>{

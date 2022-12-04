@@ -3,16 +3,6 @@ import React from 'react';
 import styles from './productcard.module.css';
 
 function ProductCard({img, name, price}) {
-    // const [products, SetProducts] = useState([]);
-
-    // useEffect( () => {
-    //     fetch('http://localhost:3000/data/product.json',{
-    //     method: 'GET'})
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             setProducts(data); // product에 product.json의 data가 들어간다.
-    //         });
-    // } ,[])
 
     return (
         <div className={styles.ProductCard}>
