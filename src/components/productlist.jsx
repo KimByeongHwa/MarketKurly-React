@@ -3,21 +3,21 @@ import React, { useEffect, useState } from 'react';
 import ProductCard from './productcard';
 import styles from './productlist.module.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper';
+import { Navigation, Pagination } from 'swiper';
 import 'swiper/css';
 import "swiper/css/navigation";
 
 function ProductList(props) {
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState([]); // Q. 한번에 받아오는데 왜 useState?
 
-    useEffect( () => {
-        fetch('http://localhost:3000/data/product.json',{
+    useEffect( () => {         // useEffect( function, deps) deps 생략가능 -> 생략시 리렌더링될 때마다 실행
+        fetch('http://localhost:3000/data/product.json',{      // fetch(resource, option) option 생략가능
         method: 'GET'})
-            .then(res => res.json())
+            .then(res => res.json()) // Q. <- 화살표함수인지?, response엔 뭐가 들어있는지?
             .then(data => {
                 setProducts(data); // products에 product.json의 data가 들어간다.
             });
-    } ,[])
+    } ,[])   // 렌더링될 때 한 번만 실행시키고 싶어서 deps에 빈 배열
     // console.log(products);
 
     return (

@@ -22,7 +22,7 @@ function MainBanner(img, alt) {
                 setImages(data); // Images에 product.json의 data가 들어간다.
             });
     } ,[])
-    console.log(Images);
+    // console.log(Images);
 
     return (
         <div className={styles.MainBanner}>
@@ -33,6 +33,9 @@ function MainBanner(img, alt) {
                   delay: 3000,
                   disableOnInteraction: false,
                 }}
+                pagination={{
+                    type: "fraction",
+                  }}
                 loop={true}
                 loopedSlides = {1} // loop duplicate - 마지막 img에서 넘어갈 때 자연스럽게
                 speed={500}
