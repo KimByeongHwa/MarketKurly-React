@@ -26,31 +26,33 @@ function MainBanner(img, alt) {
 
     return (
         <div className={styles.MainBanner}>
-            <Swiper
-                modules={[ Pagination, Navigation, Autoplay]}
-                centeredSlides={true}
-                autoplay={{
-                  delay: 3000,
-                  disableOnInteraction: false,
-                }}
-                pagination={{
-                    type: "fraction",
-                  }}
-                loop={true}
-                loopedSlides = {1} // loop duplicate - 마지막 img에서 넘어갈 때 자연스럽게
-                speed={500}
-            >
-           
-                {Images.map( image => {
-                    return(
-                        <SwiperSlide>
-                            <div className={styles.bannerContainer}>
-                                <img src={image.src}/>
-                            </div>
-                        </SwiperSlide>
-                    )
-                })}
-            </Swiper>
+            <a href="">
+                <Swiper
+                    modules={[ Pagination, Navigation, Autoplay]}
+                    centeredSlides={true}
+                    autoplay={{
+                    delay: 3000,
+                    disableOnInteraction: false,
+                    }}
+                    // pagination={{
+                    //     type: "fraction",
+                    // }}
+                    loop={true}
+                    loopedSlides = {1} // loop duplicate - 마지막 img에서 넘어갈 때 자연스럽게
+                    speed={500}
+                >
+            
+                    {Images.map( image => {
+                        return(
+                            <SwiperSlide>
+                                <div className={styles.bannerContainer}>
+                                    <img src={image.src}/>
+                                </div>
+                            </SwiperSlide>
+                        )
+                    })}
+                </Swiper>
+            </a>
         </div>
     );
 }
