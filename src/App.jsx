@@ -10,6 +10,8 @@ import AdBanner from './components/adbanner.jsx';
 import TimeSale from './components/timesale.jsx';
 import Review from './components/review.jsx';
 import Footer from './components/footer.jsx';
+import NormalHeader from './components/normalHeader.jsx';
+import SmallHeader from './components/smallHeader.jsx';
 
 
 // Q. GlobalStyle에서 html element 말고 사용자 정의태그는 사용 불가능한지?
@@ -49,6 +51,8 @@ function App() {
     <Reset />
       <BrowserRouter>
         <GlobalStyle />
+        {/* <NormalHeader /> */}
+        {/* <SmallHeader /> */}
         <Header />
         <MainBanner />
         <ProductList title="이 상품 어때요?" />
