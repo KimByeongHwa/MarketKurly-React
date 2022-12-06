@@ -23,10 +23,10 @@ function Header(props) {
         }
     }, []);
 
-    console.log(scrollPosition);
+    // console.log(scrollPosition);
 
-    const[visible, setVisible] = useState(false);
-    useEffect( () => {
+    const[visible, setVisible] = useState(false);    
+    useEffect( () => {                      // 위에서 구한 Y좌표를 useEffect를 이용하여 실시간으로 비교한다.
         if( scrollPosition < 100){
             setVisible(false);
         }
