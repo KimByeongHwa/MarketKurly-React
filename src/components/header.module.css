@@ -1,5 +1,17 @@
 .header{
     position: relative;
+    box-shadow: rgb(0 0 0 / 7%) 0px 3px 4px 0px;
+    width: 100%;
+    z-index: 10;
+}
+
+.normalHeaderInner{
+    position: relative;
+    width: 1050px;
+    margin : 0 auto;
+}
+.normalHeader{
+    position: relative;
     width: 1050px;
     height: 156px;
     margin: 0px auto;
