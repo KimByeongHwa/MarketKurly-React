@@ -1,9 +1,26 @@
 /* eslint-disable */
 import React from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './signin.module.css';
 
 function SignIn(props) {
+
+    const [inputId, setInputId] = useState('');
+    const [inputPw, setInputPw] = useState('');
+
+    const handleInputId = (e) => {
+        setInputId(e.target.value);
+    }
+
+    const handleInputPw = (e) => {
+        setInputPw(e.target.value)
+    }
+
+    const onClickLogin = () =>{
+        console.log('clicked login button');
+    }
+
     return (
         <div className={styles.SingIn}>
             <div className={styles.signinTitle}>
@@ -24,7 +41,7 @@ function SignIn(props) {
                         로그인
                     </button>
                     <button className={styles.signUpButton}>
-                        회원가입
+                        <Link to='/signup'>회원가입</Link>
                     </button>
                 </div>
             </div>

@@ -11,19 +11,19 @@ import SignIn from './pages/siginin.jsx';
 
 
 function App() {
-// Q. Header, Footer는 변하지 않는 컴포넌트인데 왜 BrowserRouter 밖으로 빼면 정상작동 안되는지
+
   return (
     <>
       <Reset />
       <GlobalStyle />
       <BrowserRouter>
-      <Header />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/signin" element={<SignIn />} />
-          </Routes>
-        <Footer />
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/signin" element={<SignIn />} />
+        </Routes>
+          <Footer />
       </BrowserRouter>
     </>
   );

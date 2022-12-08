@@ -1,8 +1,9 @@
 .SingIn{
     width: 1050px;
-    margin: 0 auto; /* 가운데 정렬 사용조건 두가지 1. auto를 위해 width값 정의돼야 함. 2. display속성이 block이어야 한다.*/
+    margin: 0 auto;
     position: relative;
 }
+
 .signinTitle{
     margin-top: 90px;
     text-align: center;
@@ -10,16 +11,19 @@
     font-size: 20px;
     line-height: 20px;
 }
+
 .signInForm{
     width: 340px;
     margin: 0px auto;
     letter-spacing: -0.6px;
     padding-top: 30px;
 }
+
 .signInForm form{
     display: flex;
     flex-direction: column;
 }
+
 .signInForm form input{
     height: 54px;
     font-size: 14px;
@@ -34,6 +38,7 @@
     margin-bottom: 12px;
     font-family: "Noto Sans KR", "malgun gothic", AppleGothic, dotum, sans-serif;
 }
+
 .finder{
     display: flex;
     -webkit-box-pack: end;
@@ -41,24 +46,29 @@
     margin: 3px 0 3px;
     font-size: 13px;
 }
+
 .finder a{
     color: rgb(51, 51, 51);
     cursor: pointer;
 }
+
 .finder span{
     width: 1px;
     height: 10px;
     margin: 3px 6px 0px;
     background-color: rgb(51, 51, 51);
 }
+
 .signButton{
     display: flex;
     flex-direction: column;
     margin: 20px 0 20px;
 }
+
 .signButton button{
     margin-top: 10px;
 }
+
 .signInButton{
     font-family: "Noto Sans KR", "malgun gothic", AppleGothic, dotum, sans-serif;
     font-size: 16px;
@@ -69,6 +79,7 @@
     color: rgb(255, 255, 255);
     background-color: rgb(95, 0, 128);
 }
+
 .signUpButton{
     font-family: "Noto Sans KR", "malgun gothic", AppleGothic, dotum, sans-serif;
     font-size: 16px;
@@ -79,4 +90,8 @@
     color: rgb(95, 0, 128);
     background-color: rgb(255, 255, 255);
     border: 1px solid rgb(95, 0, 128);
+}
+
+.signUpButton a{
+    color: rgb(95, 0, 128);
 }
