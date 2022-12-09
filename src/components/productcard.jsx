@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React from 'react';
-import styles from './productcard.module.css';
+import styles from './ProductCard.module.css';
 
 function ProductCard({img, name, price}) {
 

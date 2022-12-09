@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react';
-import styles from './timesale.module.css';
-import Timer from './timer.jsx'
+import styles from './TimeSale.module.css';
+import Timer from './Timer.jsx'
 import { useState, useEffect } from 'react';
 
 function TimeSale(props) {

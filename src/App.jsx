@@ -3,13 +3,13 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { Reset } from 'styled-reset';
 import { createGlobalStyle } from 'styled-components';
-import Home from './pages/home.jsx'
-import BeautyHome from './pages/beautyhome.jsx';
-import Header from './components/header.jsx';
-import Footer from './components/footer.jsx';
-import SignUp from './pages/signup.jsx';
-import SignIn from './pages/siginin.jsx';
-import Product from './pages/product.jsx';
+import Home from './pages/Home.jsx'
+import BeautyHome from './pages/BeautyHome.jsx';
+import Header from './components/Header.jsx';
+import Footer from './components/Footer.jsx';
+import SignUp from './pages/SignUp.jsx';
+import SignIn from './pages/SiginIn.jsx';
+import Product from './pages/Product.jsx';
 
 
 function App() {
@@ -22,10 +22,10 @@ function App() {
         <Header />
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/beautyhome' element={<BeautyHome />} />
-          <Route path='/signup' element={<SignUp />} />
-          <Route path='/signin' element={<SignIn />} />
-          <Route path='/product/:id' element={<Product />} />
+          <Route path='/BeautyHome' element={<BeautyHome />} />
+          <Route path='/SignUp' element={<SignUp />} />
+          <Route path='/SignIn' element={<SignIn />} />
+          <Route path='/Product/:id' element={<Product />} />
         </Routes>
           <Footer />
       </BrowserRouter>
@@ -36,11 +36,16 @@ function App() {
 
 // Q. GlobalStyle에서 html element 말고 사용자 정의태그는 사용 불가능한지?
 const GlobalStyle = createGlobalStyle`
+    html{
+      height: 100%;
+    }
+
     body{
         font-family: 'Noto Sans KR', 'malgun gothic', AppleGothic, dotum, sans-serif;
         font-size: 14px;
         color: #333;
         line-height: 1.15;
+        height: 100%;
     }
 
     a{

@@ -1,11 +1,11 @@
 /* eslint-disable */
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './header.module.css';
+import styles from './Header.module.css';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import { throttle } from 'lodash';
-import ModeChanger from './modechanger';
+import ModeChanger from './ModeChanger';
 
 function Header(props) {
     // 스크롤에 따른 <Header /> 변환을 위한 코드 Start

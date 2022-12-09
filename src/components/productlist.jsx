@@ -1,8 +1,8 @@
 /* eslint-disable */
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import ProductCard from './productcard';
-import styles from './productlist.module.css';
+import { Link, useNavigate } from 'react-router-dom';
+import ProductCard from './ProductCard';
+import styles from './ProductList.module.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper';
 import 'swiper/css';
@@ -21,6 +21,7 @@ function ProductList(props) {
     } ,[])   // 렌더링될 때 한 번만 실행시키고 싶어서 deps에 빈 배열
     // console.log(products);
 
+    // const navigate = useNavigate();
     return (
         <div className={styles.ProductList}>
             <div className={styles.titleLine}>
@@ -39,7 +40,8 @@ function ProductList(props) {
                         return(
                             <SwiperSlide>
                                 <Link to={`/product/${product.id}`}>
-                                <ProductCard 
+                                <ProductCard
+                                // onClick={() => navigate(`/product/${product.id}`)}
                                 img = {product.img}
                                 name = {product.name}
                                 price = {product.price}

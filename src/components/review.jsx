@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React from 'react';
-import styles from './review.module.css'
+import styles from './Review.module.css'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper';
 import 'swiper/css';
@@ -17,7 +17,7 @@ function Review(props) {
             .then(response => response.json())              // option에 들어갈 수 있는건 무엇?
             .then(data => { setReviews(data) })
     }, [])
-    console.log(reviews);
+    // console.log(reviews);
 
     return (
         <div className={styles.Review}>

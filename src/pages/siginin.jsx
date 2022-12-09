@@ -2,7 +2,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import styles from './signin.module.css';
+import styles from './SignIn.module.css';
 
 function SignIn(props) {
 

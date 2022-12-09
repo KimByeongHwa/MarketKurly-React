@@ -1,10 +1,10 @@
 /* eslint-disable */
 import React from 'react';
-import ProductList from '../components/productlist.jsx';
-import MainBanner from '../components/mainbanner.jsx';
-import AdBanner from '../components/adbanner.jsx';
-import TimeSale from '../components/timesale.jsx';
-import Review from '../components/review.jsx';
+import ProductList from '../components/ProductList.jsx';
+import MainBanner from '../components/MainBanner.jsx';
+import AdBanner from '../components/AdBanner.jsx';
+import TimeSale from '../components/TimeSale.jsx';
+import Review from '../components/Review.jsx';
 
 
 

@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React from 'react';
-import styles from './mainbanner.module.css'
+import styles from './MainBanner.module.css'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation, Autoplay } from 'swiper';
 import 'swiper/css';

@@ -2,7 +2,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import styles from './modechanger.module.css';
+import styles from './ModeChanger.module.css';
 
 
 function ModeChanger(props) {
@@ -33,7 +33,7 @@ function ModeChanger(props) {
                 마켓컬리
             </button>
             </Link>
-            <Link to='beautyhome'>
+            <Link to='BeautyHome'>
             <button 
             className={isBeautyActive ? styles.beautyActived : styles.beautyMode} 
             onClick={modeHandler}>

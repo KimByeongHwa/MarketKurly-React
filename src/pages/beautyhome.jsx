@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React from 'react';
-import styles from './beautyhome.module.css';
+import styles from './BeautyHome.module.css';
 
 function BeautyHome(props) {
     return (

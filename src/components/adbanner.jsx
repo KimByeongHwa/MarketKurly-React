@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React from 'react';
-import styles from './adbanner.module.css';
+import styles from './AdBanner.module.css';
 
 function AdBanner(props) {
     return (
