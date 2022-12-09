@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import styles from './review.module.css'
 import { Swiper, SwiperSlide } from 'swiper/react';

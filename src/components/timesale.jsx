@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import styles from './timesale.module.css';
 import Timer from './timer.jsx'

@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import ProductCard from './productcard';
 import styles from './productlist.module.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -34,14 +35,16 @@ function ProductList(props) {
                 modules={[Navigation]}
              >
                 <div className={styles.productContainer}>
-                    { products.map( product =>{
+                    { products.map( product => {
                         return(
                             <SwiperSlide>
+                                <Link to={`/product/${product.id}`}>
                                 <ProductCard 
                                 img = {product.img}
                                 name = {product.name}
                                 price = {product.price}
                                 />
+                                </Link>
                             </SwiperSlide>
                         );
                     })}               
