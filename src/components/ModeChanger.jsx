@@ -18,9 +18,20 @@ function ModeChanger(props) {
         // console.log('Beauty Mode Clicked');
     }
 
-    const modeHandler = () => {
+    const toMarketMode = () => {
+        if(!isMarketActive){
             changeMarketActive();
             changeBeautyActive();
+        }
+        else return;
+    }
+    
+    const toBeautyMode = () => {
+        if(!isBeautyActive){
+            changeMarketActive();
+            changeBeautyActive();
+        }
+        else return
     }
         
 
@@ -29,14 +40,14 @@ function ModeChanger(props) {
             <Link to='/'>
             <button 
             className={isMarketActive ? styles.marketActived : styles.marketMode} 
-            onClick={modeHandler}>
+            onClick={toMarketMode}>
                 마켓컬리
             </button>
             </Link>
             <Link to='BeautyHome'>
             <button 
             className={isBeautyActive ? styles.beautyActived : styles.beautyMode} 
-            onClick={modeHandler}>
+            onClick={toBeautyMode}>
                 뷰티컬리
             </button>
             </Link>

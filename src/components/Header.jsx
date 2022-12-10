@@ -41,9 +41,6 @@ function Header(props) {
 
     const[isHover, setIsHover] = useState(false);
 
-    const colorChanger = () => {
-
-    }
 
     return (
         <div className={styles.header}>

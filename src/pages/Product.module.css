@@ -33,7 +33,7 @@
     width: 500px;
 }
 
-.title{
+.aboutTitle{
     display: flex;
     justify-content: space-between;
 }
@@ -314,3 +314,451 @@
 }
 
 /* DETAIL */
+.detail{
+    padding-top: 40px;
+}
+
+.detailTitle{
+    text-align: center;
+    margin-top: 75px;
+    padding-bottom: 35px;
+    display: block;
+    font-size: 38px;
+    font-weight: 500;
+    line-height: 46px;
+    border-bottom: 1px solid rgb(193, 193, 193);
+    color: rgb(102, 102, 102);
+}
+
+.detailTitle span{
+    display: block;
+    font-size: 24px;
+    margin-bottom: 14px;
+    line-height: 15px;
+}
+
+.detailDescription{
+    margin-top: 28px;
+    font-size: 18px;
+    line-height: 32px;
+    color: rgb(55, 55, 55);
+    font-weight: 300;
+    letter-spacing: 0px;
+}
+
+.checkPoint{
+    margin-top: 180px;
+    text-align: center;
+}
+
+.detailH3{
+    font-size: 50px;
+    background: rgb(255, 255, 255);
+    text-shadow: 2px 0px;
+    font-weight: 400;
+    font-family: "Noto Sans";
+    color: rgb(102, 102, 102);
+    margin-bottom: 50px;
+}
+
+/* PICK */
+.pick{
+    margin-top: 190px;
+    text-align: center;
+    width: 100%;
+}
+
+/* TIP */
+.tip{
+
+}
+
+.tipTitle{
+    display: inline-block;
+    margin-left: 58px;
+    font-size: 36px;
+    background: rgb(255, 255, 255);
+    text-shadow: 2px 0px;
+    font-weight: 500;
+    color: rgb(102, 102, 102);
+    letter-spacing: 1px;
+}
+
+.tipBox{
+    margin-top: -15px;
+    border: 1px solid rgb(185, 185, 185);
+}
+
+.tipContents{
+    margin: 60px 62px;
+}
+
+.tipText{
+    text-align: left;
+}
+
+.tipText p{
+    display: block;
+    font-size: 25px;
+    line-height: 38px;
+    margin-bottom: 10px;
+    font-weight: 500;
+    color: rgb(55, 55, 55);
+    letter-spacing: 0px;
+}
+
+.tipSpan{
+    margin: 0px;
+    font-size: 18px;
+    line-height: 32px;
+    color: rgb(55, 55, 55);
+    font-weight: 300;
+    letter-spacing: 0px;
+}
+
+/* NOTICEINFO */
+.noticeInfo{
+    width: 100%;
+    padding-bottom: 72px;
+    border-bottom: 1px solid rgb(238, 238, 238);
+    margin-top: 100px;
+}
+
+.noticeInfo h3{
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 41px;
+    text-align: center;
+    letter-spacing: -0.5px;
+    color: rgb(102, 102, 102);
+}
+
+.infoTable{
+    width: 100%;
+    padding-top: 36px;
+    font-size: 13px;
+    line-height: 18px;
+    letter-spacing: -0.5px; 
+}
+
+.tableTr{
+    display: flex;
+    width: 100%;
+}
+
+.tableTr li:nth-child(odd){
+    width: 180px;
+    padding: 18px 18px 0 18px;
+    background-color: rgb(247, 247, 247);
+    word-break: break-all;
+}
+
+.tableTr li:nth-child(even){
+    display: flex;
+    width: 325px;
+    padding: 18px;
+    color: rgb(102, 102, 102);
+}
+
+.tableTr:nth-child(3) li{
+    padding-bottom: 18px;
+}
+
+/* SELLERINFO */
+.sellerInfo{
+    padding: 72px 0;
+    border-bottom: 1px solid rgb(238, 238, 238);
+}
+
+.sellerInfo h3{
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 41px;
+    text-align: center;
+    letter-spacing: -0.5px;
+    color: rgb(102, 102, 102);
+}
+
+.sellerInfo ul{
+    display: flex;
+}
+
+.sellerInfo ul li{
+    list-style: none;
+}
+
+.sellerInfo ul li:first-child{
+    width: 180px;
+    padding: 18px;
+    background-color: rgb(247, 247, 247);
+    word-break: break-all;
+}
+
+.sellerInfo ul li:last-child{
+    width: 325px;
+    padding: 18px;
+    color: rgb(102, 102, 102);
+}
+
+/* WHYKURLY */
+.whyKurly{
+    padding: 100px 0 88px;
+}
+
+.whyKurly h3{
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 41px;
+    text-align: center;
+    letter-spacing: -0.5px;
+    color: rgb(102, 102, 102);
+}
+
+.cardContainer{
+    padding-top: 21px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card{
+    width: 315px;
+    padding-top: 59px;
+}
+
+.card p{
+    font-weight: 300;
+    font-size: 16px;
+    color: rgb(51, 51, 51);
+    line-height: 25px;
+    text-align: center;
+    padding-top: 22px;
+}
+
+.card span{
+    padding-top: 7px;
+    font-size: 11px;
+    color: rgb(102, 102, 102);
+}
+
+.cardImgContainer{
+    display: block;
+    text-align: center;
+}
+
+.cardImgContainer img{
+    margin-bottom: 10px;
+}
+
+.card > .cardTitle{
+    display: block;
+    text-align: center;
+    font-weight: 500;
+    font-size: 18px;
+    color: rgb(95, 0, 128);
+    line-height: 27px;
+}
+
+/* CUSTOMERCENTER */
+.customerCenter{
+    padding: 60px 5px 0px;
+    border-top: 1px solid rgb(221, 221, 221);
+}
+
+.centerTop{
+
+}
+
+.centerTop h3{
+    font-weight: 500;
+    font-size: 28px;
+    color: rgb(102, 102, 102);
+}
+
+.centerTop p{
+    padding-top: 31px;
+    font-weight: 500;
+    font-size: 18px;
+    color: rgb(102, 102, 102);
+    line-height: 23px;
+}
+
+.centerTop p span{
+    display: inline-block;
+    padding-top: 6px;
+    font-weight: 300;
+    font-size: 16px;
+}
+
+.contact{
+    display: flex;
+    padding: 59px 0px 71px;
+}
+
+.contact span{
+    display: block;
+    font-weight: 500;
+    font-size: 18px;
+    color: rgb(95, 0, 128);
+    line-height: 27px;
+}
+
+.contact span::before{
+    content: "";
+    display: inline-block;
+    width: 3px;
+    height: 20px;
+    margin: 5px 10px 0px 0px;
+    background-color: rgb(95, 0, 128);
+    vertical-align: top;
+}
+
+.contact p{
+    display: block;
+    padding: 9px 0 13px;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 25px;
+}
+
+.contactText{
+    font-weight: 300;
+    font-size: 15px;
+    color: rgb(102, 102, 102);
+    line-height: 22px;
+}
+
+.call{
+    width: 340px;
+}
+
+.kakao{
+    width: 340px;
+    font-weight: 300;
+    font-size: 15px;
+    color: rgb(102, 102, 102);
+    line-height: 22px;
+}
+
+.hompage{
+    width: 340px;
+    font-weight: 300;
+    font-size: 15px;
+    color: rgb(102, 102, 102);
+    line-height: 22px;
+}
+
+.return{
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 27px;
+}
+
+.returnBox{
+    border: 1px solid rgb(221, 221, 221);
+    padding: 14px 0px 17px;
+}
+
+.returnStrong{
+    width: 179px;
+    padding-left: 29px;
+    font-weight: 500;
+    font-size: 18px;
+    color: rgb(95, 0, 128);
+}
+
+.return span{
+    padding-left: 20px;
+}
+
+.case{
+    display: flex;
+    padding: 39px 0px 40px;
+    border-bottom: 1px solid rgb(221, 221, 221);
+}
+
+.caseStrong{
+    padding-left: 31px;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 25px;
+}
+
+.caseLeft{
+    width: 340px;
+}
+
+.caseRight{
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 22px;
+}
+
+.caseRight p{
+    padding-bottom: 20px;
+}
+
+.rightStrong{
+    display: block;
+    padding-bottom: 6px;
+    font-weight: 500;
+    font-size: 15px;
+    color: rgb(95, 0, 128);
+    line-height: 22px;
+}
+
+.rightStrong2{
+    display: block;
+    padding: 30px 0px 6px;
+    font-weight: 500;
+    font-size: 15px;
+    color: rgb(95, 0, 128);
+    line-height: 22px;
+}
+
+.cancel{
+    padding-top: 40px;
+}
+
+.cancelBox{
+    border: 1px solid rgb(221, 221, 221);
+    padding: 14px 0px 17px;
+    display: flex;
+}
+
+.cancelBoxRight{
+    font-size: 16px;
+    font-weight: 500;
+    color: rgb(102, 102, 102);
+    line-height: 27px;
+}
+
+.cancelStrong{
+    width: 179px;
+    padding-left: 29px;
+    font-weight: 500;
+    font-size: 18px;
+    color: rgb(95, 0, 128);
+}
+
+.deliveryBox{
+    border: 1px solid rgb(221, 221, 221);
+    border-top: none;
+    padding: 14px 0px 17px;
+    display: flex;
+}
+
+.deliveryStrong{
+    width: 179px;
+    padding-left: 29px;
+    font-weight: 500;
+    font-size: 18px;
+    color: rgb(95, 0, 128);
+}
+
+.deliveryBoxRight{
+    font-size: 16px;
+    font-weight: 500;
+    color: rgb(102, 102, 102);
+    line-height: 27px;
+}
