@@ -38,30 +38,21 @@ function Header(props) {
     // 스크롤에 따른 <Header /> 변환을 위한 코드 End
 
 
+
     const[isHover, setIsHover] = useState(false);
 
-    const[isMarketActive, setisMarketActive] = useState(true);
-    const changeMarketActive = () => {
-        setisMarketActive(!isMarketActive);
-        console.log('Market Mode Clicked');
-    }
+    const colorChanger = () => {
 
-    const[isBeautyActive, setIsBeautyActive] = useState(false);
-    const changeBeautyActive = () => {
-        setIsBeautyActive(!isBeautyActive);
-        console.log('Beauty Mode Clicked');
     }
-
-   
 
     return (
         <div className={styles.header}>
             <div className={styles.normalHeaderInner}>
                 <div className={scrollPosition < 100 ? 'styles.normalHeader' : 'stlyes.hidden'}>
                     <div className={styles.top}>
-                        <Link to="signup">회원가입</Link>
+                        <Link to="SignUp">회원가입</Link>
                         <Bar />
-                        <Link to="signin">로그인</Link>
+                        <Link to="SignIn">로그인</Link>
                         <Bar />
                         <Link to="/">고객센터<span className={styles.underImg} /></Link>
                     </div>
@@ -82,7 +73,9 @@ function Header(props) {
                             </div>
                             <button className={styles.likeButton}></button>
                             <div className={styles.buttonContainer}>
-                                <button className={styles.cartButton}></button>
+                                <Link to='Cart'>
+                                    <button className={styles.cartButton}></button>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -132,8 +125,10 @@ function Header(props) {
                                 <button className={styles.mapButton}></button>
                             </div>
                             <button className={styles.likeButton}></button>
-                            <div className={styles.buttonContainer}>
-                                <button className={styles.cartButton}></button>
+                            <div className={styles.buttonContainer}>  
+                                <Link to='Cart'>                            
+                                    <button className={styles.cartButton}></button>
+                                </Link>
                             </div>
                         </div>
                     </div>

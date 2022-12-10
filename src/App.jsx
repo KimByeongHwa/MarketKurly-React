@@ -9,7 +9,9 @@ import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
 import SignUp from './pages/SignUp.jsx';
 import SignIn from './pages/SiginIn.jsx';
+import Cart from './pages/Cart.jsx'
 import Product from './pages/Product.jsx';
+import ScrollToTop from './components/ScrollToTop.jsx';
 
 
 function App() {
@@ -19,12 +21,14 @@ function App() {
       <Reset />
       <GlobalStyle />
       <BrowserRouter>
+      <ScrollToTop />
         <Header />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/BeautyHome' element={<BeautyHome />} />
           <Route path='/SignUp' element={<SignUp />} />
           <Route path='/SignIn' element={<SignIn />} />
+          <Route path='/Cart' element={<Cart />} />
           <Route path='/Product/:id' element={<Product />} />
         </Routes>
           <Footer />

@@ -208,6 +208,10 @@
     height: 100%;
 }
 
+.category:hover > .categoryText{
+    color: rgb(95, 0, 128);
+}
+
 .categoryImg{
     width: 16px;
     height: 14px;

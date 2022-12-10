@@ -14,7 +14,7 @@ function ProductList(props) {
     useEffect( () => {         // useEffect( function, deps) deps 생략가능 -> 생략시 리렌더링될 때마다 실행
         fetch('http://localhost:3000/data/product.json',{      // fetch(resource, option) option 생략가능
         method: 'GET'})
-        .then(res => res.json()) // Q. <- 화살표함수인지?, response엔 뭐가 들어있는지?
+        .then(res => res.json()) // Q. response엔 뭐가 들어있는지?
         .then(data => {
             setProducts(data); // products에 product.json의 data가 들어간다.
         });
@@ -22,6 +22,10 @@ function ProductList(props) {
     // console.log(products);
 
     // const navigate = useNavigate();
+    // const toProduct = () => {
+    //     navigate(`/Product/${id}`, {state: {id:state.id, img:state.img, name:state.name, price: state.price}})
+    // }
+
     return (
         <div className={styles.ProductList}>
             <div className={styles.titleLine}>
@@ -39,9 +43,8 @@ function ProductList(props) {
                     { products.map( product => {
                         return(
                             <SwiperSlide>
-                                <Link to={`/product/${product.id}`}>
+                                <Link to={`/product/${product.id}`} key={product.id}>
                                 <ProductCard
-                                // onClick={() => navigate(`/product/${product.id}`)}
                                 img = {product.img}
                                 name = {product.name}
                                 price = {product.price}
