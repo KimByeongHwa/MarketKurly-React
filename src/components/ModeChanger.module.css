@@ -1,0 +1,47 @@
+.modeChanger{
+    display: flex;
+}
+
+.marketMode, .beautyMode{
+    flex-shrink: 0;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: rgb(181, 181, 181);
+    cursor: pointer;
+    position: relative;
+    margin-left: 20px;
+}
+
+.marketMode::after{
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 14px;
+    margin-top: 5px;
+    margin-left: 11px;
+    background-color: rgb(226, 226, 226);
+}
+
+.marketActived, .beautyActived{
+    flex-shrink: 0;
+    font-size: 18px;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: rgb(95, 0, 128);
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+    margin-left: 20px;
+}
+
+.marketActived::after{
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 14px;
+    margin-top: 5px;
+    margin-left: 11px;
+    background-color: rgb(226, 226, 226);
+}
