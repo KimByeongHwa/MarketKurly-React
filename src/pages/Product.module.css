@@ -282,7 +282,7 @@
 
 /* MIDDLEBAR */
 .middleBarContainer{
-    z-index: 20;
+    z-index: 100;
     position: sticky;
     top: 56px;
     width: 1010px;
