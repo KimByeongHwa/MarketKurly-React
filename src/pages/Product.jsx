@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import QuantityCounter from '../components/QuantityCounter';
 import styles from './Product.module.css'
 
 
@@ -19,13 +20,29 @@ function Product(props) {
     },[])
 
    let product = []; 
-   for(let i=0; i<products.length; i++){  // find() 메소드로 구현 생각해보기.
-    if(products[i].id === Number(id)){
+   for(let i=0; i<products.length; i++){  // find() 메소드로 구현 생각해보기. 아래 링크 => find 구현영상
+    if(products[i].id === Number(id)){    // https://www.youtube.com/watch?v=m7NNIDKd8sc 
         product = products[i];
         break;
     }
    }
 //    console.log(product);
+
+    const commaPrice = (price) => {
+        return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
+
+    console.log('원본q:',product.quantity);
+
+    const[quantity, setQuantity] = useState(1);
+
+    const getQuantity = (quantity) => {    // 자식으로부터 받아온 quantity를 setQuantity에 저장
+        setQuantity(quantity);             // 위에 quantitiy랑 다른거임. 자식으로부터 받아온 인자 quantity
+    }
+
+    console.log('get 이후 quantity:', quantity);
+
+    product.quantity = quantity; // Q. 가격계산 시 작동은 정상적으로 되나 개발자콘솔에서는 수량이 한개 깎여서 나옴.
 
 
     return (
@@ -44,7 +61,7 @@ function Product(props) {
                         <div className={styles.description}>{product.description}</div>
                     </div>
                     <div className={styles.price}>
-                        <p>{product.price} 원</p>
+                        <p>{commaPrice(+(product.price)*(product.quantity))} 원</p>
                         <span>로그인 후, 적립 혜택이 제공됩니다.</span>
                     </div>
                     <div className={styles.info}>
@@ -78,13 +95,11 @@ function Product(props) {
                         <div className={styles.infoBox}>
                             <div className={styles.boxLeft}>상품선택</div>
                             <div className={styles.boxRight}>
-                            <div class={styles.eaCounterBox}>
-                                    <p>{product.name}</p>
-                                    <div class={styles.eaCounterBoxUnder}>
-                                        <div class={styles.eaButtons}>
-                                            <button class={styles.minusButton}>-</button><button class={styles.eaButton}>1</button><button class={styles.plusButton}>+</button>
-                                        </div>
-                                        <span>{product.price}</span>
+                            <div class={styles.quantityCounterBox}> 
+                                    <p>{product.name}</p>  
+                                    <div class={styles.quantityCounterBoxUnder}> 
+                                        <QuantityCounter quantity={quantity} getQuantity={getQuantity}/>
+                                        <span>{commaPrice(+(product.price)*(product.quantity))} 원</span>
                                     </div>
                                 </div>
                             </div>
@@ -94,7 +109,7 @@ function Product(props) {
                         <div className={styles.orderTop}>
                             <div className={styles.priceBox}>
                                 <span className={styles.priceText}>총 상품금액</span>
-                                <span className={styles.priceNumber}>{product.price}</span>
+                                <span className={styles.priceNumber}>{commaPrice(+(product.price)*(product.quantity))}</span>
                             </div>
                             <div className={styles.mileage}>
                                 <span className={styles.mileageIcon}>적립</span>로그인 후, 적립 혜택 제공

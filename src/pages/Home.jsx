@@ -9,7 +9,6 @@ import Review from '../components/Review.jsx';
 
 
 function Home() {
-
   return (
     <>
         <MainBanner />

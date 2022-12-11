@@ -5,17 +5,6 @@ import Timer from './Timer.jsx'
 import { useState, useEffect } from 'react';
 
 function TimeSale(props) {
-    // const [products, setProducts] = useState();        Q. 객체 data가 한개일 땐 가져오는거 어떻게?
-    
-    // useEffect( () => {
-    //     fetch('http://localhost:3000/data/saleproduct.json',{  
-    //     method: 'GET'})                                     
-    //     .then(response => response.json())             
-    //     .then(data => { setProducts(data) })
-    // }, [])
-    // console.log(products);
-
-
     let commaResultPrice =(Math.round((props.originalPrice) *((100-props.saleRate)/100))).toLocaleString('ko-KR');
     let commaOriginalPrice = (props.originalPrice).toLocaleString('ko-KR');
 

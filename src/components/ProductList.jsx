@@ -21,11 +21,6 @@ function ProductList(props) {
     } ,[])   // 렌더링될 때 한 번만 실행시키고 싶어서 deps에 빈 배열
     // console.log(products);
 
-    // const navigate = useNavigate();
-    // const toProduct = () => {
-    //     navigate(`/Product/${id}`, {state: {id:state.id, img:state.img, name:state.name, price: state.price}})
-    // }
-
     return (
         <div className={styles.ProductList}>
             <div className={styles.titleLine}>
@@ -47,7 +42,7 @@ function ProductList(props) {
                                 <ProductCard
                                 img = {product.img}
                                 name = {product.name}
-                                price = {product.price}
+                                price = {product.price.toLocaleString('ko-KR')}
                                 />
                                 </Link>
                             </SwiperSlide>
