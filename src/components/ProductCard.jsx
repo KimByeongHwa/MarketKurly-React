@@ -2,7 +2,7 @@
 import React from 'react';
 import styles from './ProductCard.module.css';
 
-function ProductCard({img, name, price}) {
+function ProductCard({img, name, description, price}) {
 
     return (
         <div className={styles.ProductCard}>
@@ -15,6 +15,7 @@ function ProductCard({img, name, price}) {
 
             <div className={styles.productInfo}>
                 <div className={styles.productName}>{name}</div>
+                <div className={styles.productDescription}>{description}</div>
                 <div className={styles.pricePack}>
                   <div className={styles.productPrice}>{price} 원</div>
                 </div>

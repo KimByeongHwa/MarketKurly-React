@@ -47,6 +47,15 @@
     overflow-wrap: break-word;
 }
 
+.productDescription{
+    font-size: 14px;
+    font-weight: 400;
+    color: rgb(153, 153, 153);
+    margin-bottom: 8px;
+    line-height: 1.38;
+    word-break: break-word;
+}
+
 .pricePack{
     display: flex;
     justify-content: space-between;

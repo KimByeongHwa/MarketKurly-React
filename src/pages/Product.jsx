@@ -32,7 +32,7 @@ function Product(props) {
         return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     }
 
-    console.log('원본q:',product.quantity);
+    // console.log('원본q:',product.quantity);
 
     const[quantity, setQuantity] = useState(1);
 
@@ -40,7 +40,7 @@ function Product(props) {
         setQuantity(quantity);             // 위에 quantitiy랑 다른거임. 자식으로부터 받아온 인자 quantity
     }
 
-    console.log('get 이후 quantity:', quantity);
+    // console.log('get 이후 quantity:', quantity);
 
     product.quantity = quantity; // Q. 가격계산 시 작동은 정상적으로 되나 개발자콘솔에서는 수량이 한개 깎여서 나옴.
 
@@ -109,7 +109,7 @@ function Product(props) {
                         <div className={styles.orderTop}>
                             <div className={styles.priceBox}>
                                 <span className={styles.priceText}>총 상품금액</span>
-                                <span className={styles.priceNumber}>{commaPrice(+(product.price)*(product.quantity))}</span>
+                                <span className={styles.priceNumber}>{commaPrice(+(product.price)*(product.quantity))} 원</span>
                             </div>
                             <div className={styles.mileage}>
                                 <span className={styles.mileageIcon}>적립</span>로그인 후, 적립 혜택 제공

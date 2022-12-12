@@ -42,6 +42,7 @@ function ProductList(props) {
                                 <ProductCard
                                 img = {product.img}
                                 name = {product.name}
+                                description = {product.description}
                                 price = {product.price.toLocaleString('ko-KR')}
                                 />
                                 </Link>

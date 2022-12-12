@@ -1,0 +1,6 @@
+.CartProduct{
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 20px 0px;
+}

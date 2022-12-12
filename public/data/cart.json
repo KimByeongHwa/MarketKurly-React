@@ -1,0 +1,62 @@
+[
+    {
+        "'id": 1,
+        "name": "[프레지덩] 스프레더블 치즈",
+        "description": "촉촉하고 고소한 포션 크림치즈",
+        "img":"https://img-cf.kurly.com/cdn-cgi/image/width=400,format=auto/shop/data/goods/1601002334585l0.jpg",
+        "quantity": 1,
+        "price": 4410,
+        "keep": "cold",
+        "checked": true
+    },
+    {
+        "'id": 2,
+        "name": "[KF365] 1+ 한우 등심 300g(냉장)",
+        "description": "",
+        "img":"https://img-cf.kurly.com/cdn-cgi/image/width=400,format=auto/shop/data/goods/1653040180386l0.jpg",
+        "quantity": 1,
+        "price": 43600,
+        "keep": "cold",
+        "checked": true
+    },
+    {
+        "'id": 3,
+        "name": "[그녀의빵공장] 라우겐",
+        "description": "담백하면서도 짭조름한 독일 빵",
+        "img":"https://img-cf.kurly.com/cdn-cgi/image/width=400,format=auto/shop/data/goods/161182353433l0.jpg",
+        "quantity": 1,
+        "price": 2500,
+        "keep": "normal",
+        "checked": true
+    },
+    {
+        "'id": 4,
+        "name": "[후디스] 하이뮨 프로틴 밸런스 (125mL X 12포)",
+        "description": "",
+        "img":"https://img-cf.kurly.com/cdn-cgi/image/width=400,format=auto/shop/data/goods/1614759940170l0.jpg",
+        "quantity": 1,
+        "price": 15800,
+        "keep": "normal",
+        "checked": true
+    },
+    {
+        "'id": 5,
+        "name": "뚝딱! 대파 500g (냉동)",
+        "description": "손쉽게 더하는 싱그러운 맛과 향",
+        "img":"https://img-cf.kurly.com/cdn-cgi/image/width=676,format=auto/shop/data/goods/1648710200738l0.jpg",
+        "quantity": 1,
+        "price": 4990,
+        "keep": "freeze",
+        "checked": true
+    },
+    {
+        "'id": 6,
+        "name": "[디케이냉동] 치즈스틱",
+        "description": "치즈의 풍미가 가득",
+        "img":"https://img-cf.kurly.com/cdn-cgi/image/width=676,format=auto/shop/data/goods/1602495577329l0.jpg",
+        "quantity": 1,
+        "price": 2500,
+        "keep": "freeze",
+        "checked": true
+    }
+]
