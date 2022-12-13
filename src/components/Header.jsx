@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { throttle } from 'lodash';
 import ModeChanger from './ModeChanger';
 
-function Header(props) {
+function Header( {carts} ) {
     // 스크롤에 따른 <Header /> 변환을 위한 코드 Start
     const [scrollPosition, setScrollPosition] = useState(0); // scrollPosition을 변화시킬 state로 정의.
     
@@ -71,7 +71,13 @@ function Header(props) {
                             <button className={styles.likeButton}></button>
                             <div className={styles.buttonContainer}>
                                 <Link to='Cart'>
-                                    <button className={styles.cartButton}></button>
+                                    <button className={styles.cartButton}>
+                                        { carts.length >= 1 ? (
+                                            <span className={styles.cartCount}> {carts.length} </span>
+                                        ) : (
+                                            ""
+                                        )}
+                                    </button>
                                 </Link>
                             </div>
                         </div>
@@ -124,7 +130,13 @@ function Header(props) {
                             <button className={styles.likeButton}></button>
                             <div className={styles.buttonContainer}>  
                                 <Link to='Cart'>                            
-                                    <button className={styles.cartButton}></button>
+                                    <button className={styles.cartButton}>
+                                        { carts.length >= 1 ? (
+                                            <span className={styles.cartCount}> {carts.length} </span>
+                                        ) : (
+                                                ""
+                                        )}
+                                    </button>
                                 </Link>
                             </div>
                         </div>

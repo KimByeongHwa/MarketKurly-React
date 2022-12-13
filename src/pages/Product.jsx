@@ -1,11 +1,13 @@
 /* eslint-disable */
+import { indexOf } from 'lodash';
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import QuantityCounter from '../components/QuantityCounter';
 import styles from './Product.module.css'
+import Swal from 'sweetalert2'
 
 
-function Product(props) {
+function Product({ carts, setCarts }) {
     const {id} = useParams();
     // console.log('id:', id);
     
@@ -26,25 +28,77 @@ function Product(props) {
         break;
     }
    }
-//    console.log(product);
 
-    const commaPrice = (price) => {
-        return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    const[count, setCount] = useState(1);
+
+    const getCount = (count) => {    // 자식으로부터 받아온 getCount함수를 통해 count값 변경
+        setCount(count);             
     }
 
-    // console.log('원본q:',product.quantity);
+    const setQuantity = (id, quantity) => {
+        const found = carts.filter((el) => el.id === id)[0];
+        const idx = carts.indexOf(found);
+        const cartItem = {
+            id: product.id,
+            name: product.name,
+            description: product.description,
+            img: product.img,
+            price: product.price,
+            quantity: quantity,
+            delivery: product.delivery,
+            keep: product.keep,
+            checked: true
+        };
 
-    const[quantity, setQuantity] = useState(1);
-
-    const getQuantity = (quantity) => {    // 자식으로부터 받아온 quantity를 setQuantity에 저장
-        setQuantity(quantity);             // 위에 quantitiy랑 다른거임. 자식으로부터 받아온 인자 quantity
+        setCarts([ ...carts.slice(0, idx), cartItem, ...carts.slice(idx+1) ]); // 구문 분석 필요
+        Swal.fire({
+            text: '장바구니에 추가되었습니다.',
+            confirmButtonText: '확인',
+            confirmButtonColor: 'rgb(95, 0, 128)'
+        });
     }
 
-    // console.log('get 이후 quantity:', quantity);
+    const addToCart = () => {
+        const cartItem = {
+            id: product.id,
+            name: product.name,
+            description: product.description,
+            img: product.img,
+            price: product.price,
+            quantity: count,
+            delivery: product.delivery,
+            keep: product.keep,
+            checked: true
+        };
 
-    product.quantity = quantity; // Q. 가격계산 시 작동은 정상적으로 되나 개발자콘솔에서는 수량이 한개 깎여서 나옴.
+        const found = carts.find((el) => el.id === cartItem.id);     // filter쓰면 quantity: NaN 뜸
 
+        if(found) {
+            setQuantity( cartItem.id, found.quantity + count );
+            // console.log('fonud:',found);
+        } else {
+            setCarts([...carts, cartItem]);
+            Swal.fire({
+                text: '장바구니에 추가되었습니다.',
+                confirmButtonText: '확인',
+                confirmButtonColor: 'rgb(95, 0, 128)'
+            });
+            // console.log('new');
+        }
+    }
+    // console.log('carts', carts);
+    
 
+    const PlusQuantity = () => {
+        getCount(count => count + 1);
+    }
+
+    const MinusQuantity = () => {
+        if (count>=2) {
+            getCount(count => count - 1);
+        }
+        else return;
+    }
     return (
         <div className={styles.Product}>
             <div className={styles.about}>
@@ -61,7 +115,7 @@ function Product(props) {
                         <div className={styles.description}>{product.description}</div>
                     </div>
                     <div className={styles.price}>
-                        <p>{commaPrice(+(product.price)*(product.quantity))} 원</p>
+                        <p>{(+(product.price)*(product.quantity)).toLocaleString('ko-KR')} 원</p>
                         <span>로그인 후, 적립 혜택이 제공됩니다.</span>
                     </div>
                     <div className={styles.info}>
@@ -98,8 +152,13 @@ function Product(props) {
                             <div class={styles.quantityCounterBox}> 
                                     <p>{product.name}</p>  
                                     <div class={styles.quantityCounterBoxUnder}> 
-                                        <QuantityCounter quantity={quantity} getQuantity={getQuantity}/>
-                                        <span>{commaPrice(+(product.price)*(product.quantity))} 원</span>
+                                        {/* <QuantityCounter /> */}
+                                        <div className={styles.QuantityCounter}>
+                                            <button class={styles.minusButton} onClick={MinusQuantity}>-</button>
+                                            <button class={styles.quantityButton}>{count}</button>
+                                            <button class={styles.plusButton} onClick={PlusQuantity}>+</button>          
+                                        </div>
+                                        <span>{(+(product.price)*(count)).toLocaleString('ko-KR')} 원</span>
                                     </div>
                                 </div>
                             </div>
@@ -109,7 +168,7 @@ function Product(props) {
                         <div className={styles.orderTop}>
                             <div className={styles.priceBox}>
                                 <span className={styles.priceText}>총 상품금액</span>
-                                <span className={styles.priceNumber}>{commaPrice(+(product.price)*(product.quantity))} 원</span>
+                                <span className={styles.priceNumber}>{(+(product.price)*(count)).toLocaleString('ko-KR')} 원</span>
                             </div>
                             <div className={styles.mileage}>
                                 <span className={styles.mileageIcon}>적립</span>로그인 후, 적립 혜택 제공
@@ -118,7 +177,7 @@ function Product(props) {
                         <div className={styles.orderButtons}>
                             <button className={styles.likeNnotice}><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0yNS44MDcgNy44NjNhNS43NzcgNS43NzcgMCAwIDAtOC4xNzIgMEwxNiA5LjQ5N2wtMS42MzUtMS42MzRhNS43NzkgNS43NzkgMCAxIDAtOC4xNzMgOC4xNzJsMS42MzQgMS42MzQgNy40NjYgNy40NjdhMSAxIDAgMCAwIDEuNDE1IDBzMCAwIDAgMGw3LjQ2Ni03LjQ2N2gwbDEuNjM0LTEuNjM0YTUuNzc3IDUuNzc3IDAgMCAwIDAtOC4xNzJ6IiBzdHJva2U9IiM1RjAwODAiIHN0cm9rZS13aWR0aD0iMS42IiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" alt="like-button" /></button>
                             <button className={styles.likeNnotice}><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxnIHN0cm9rZT0iI0NDQyIgc3Ryb2tlLXdpZHRoPSIxLjYiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTEyLjY2NiAyM2EzLjMzMyAzLjMzMyAwIDEgMCA2LjY2NiAwIi8+CiAgICAgICAgPHBhdGggZD0iTTI1Ljk5OCAyMi43MzhINmwuMDEzLS4wM2MuMDc2LS4xMzUuNDcxLS43MDQgMS4xODYtMS43MDlsLjc1LTEuMDV2LTYuNjM1YzAtNC40ODUgMy40MzgtOC4xNCA3Ljc0MS04LjMwOEwxNiA1YzQuNDQ2IDAgOC4wNSAzLjcyMiA4LjA1IDguMzE0djYuNjM0bDEuNzA3IDIuNDExYy4xNzMuMjUzLjI1NC4zOC4yNDIuMzh6IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICAgIDwvZz4KPC9zdmc+Cg==" alt="notice-button" /></button>
-                            <button className={styles.toShoppingCart}>장바구니 담기</button>
+                            <button className={styles.toShoppingCart} onClick={() => addToCart()}>장바구니 담기</button>
                         </div>
                     </div>
                 </div>

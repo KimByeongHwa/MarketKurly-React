@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { Reset } from 'styled-reset';
 import { createGlobalStyle } from 'styled-components';
@@ -15,6 +15,7 @@ import ScrollToTop from './components/ScrollToTop.jsx';
 
 
 function App() {
+  const [carts, setCarts] = useState([]); // 제일 상단에서 정의한 cart 정보를 필요한 컴포넌트에 뿌려준다. cart data를 만지는 곳은 Product(장바구니 추가 버튼이 있기 때문)
 
   return (
     <>
@@ -22,14 +23,14 @@ function App() {
       <GlobalStyle />
       <BrowserRouter>
       <ScrollToTop />
-        <Header />
+        <Header carts={carts} />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/BeautyHome' element={<BeautyHome />} />
           <Route path='/SignUp' element={<SignUp />} />
           <Route path='/SignIn' element={<SignIn />} />
-          <Route path='/Cart' element={<Cart />} />
-          <Route path='/Product/:id' element={<Product />} />
+          <Route path='/Cart' element={<Cart carts={carts} />} />
+          <Route path='/Product/:id' element={<Product carts={carts} setCarts={setCarts}/>} />
         </Routes>
           <Footer />
       </BrowserRouter>
