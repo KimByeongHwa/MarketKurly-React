@@ -50,7 +50,7 @@ function Product({ carts, setCarts }) {
             checked: true
         };
 
-        setCarts([ ...carts.slice(0, idx), cartItem, ...carts.slice(idx+1) ]); // 구문 분석 필요
+        setCarts([ ...carts.slice(0, idx), cartItem, ...carts.slice(idx+1) ]);
         Swal.fire({
             text: '장바구니에 추가되었습니다.',
             confirmButtonText: '확인',

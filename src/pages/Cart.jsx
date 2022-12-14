@@ -6,7 +6,22 @@ import CartProduct from '../components/CartProduct';
 import styles from './Cart.module.css'
 import styled from 'styled-components'
 
-function Cart( { carts, }) {
+function Cart( { carts, setCarts }) {
+
+    // console.log(carts);
+    const [nowQuantity, setNowQuantity] = useState();
+
+    const getNowQuantity = (changedQuantity) => {
+        setNowQuantity(changedQuantity);
+    }
+
+    const sumPrice = carts.reduce((accumulator, cart) => {
+        // console.log('acc:', accumulator);
+        // console.log('cart.price:', cart.price);
+        // console.log('cart.quantity', cart.quantity);
+        // console.log('1result:', cart.price*cart.quantity);   // cart.quantity 를 state값으로 정의해서 자식에서 변화된 값을 가져와야함. 이를 상단에 있는 getNowQuantity로 구현하였음.
+        return accumulator + (cart.price*cart.quantity);
+    },0)
 
     return (
         <div className={styles.Cart}>
@@ -28,9 +43,12 @@ function Cart( { carts, }) {
                                 <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHZpZXdCb3g9IjAgMCAzMCAzMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8ZGVmcz4KICAgICAgICA8cGF0aCBpZD0iN2EwMnFxZzNqYSIgZD0iTTExIDEyaDl2OSIvPgogICAgPC9kZWZzPgogICAgPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8cGF0aCBkPSJNMCAwaDMwdjMwSDB6Ii8+CiAgICAgICAgPHVzZSBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InNxdWFyZSIgdHJhbnNmb3JtPSJyb3RhdGUoLTQ1IDE1LjUgMTYuNSkiIHhsaW5rOmhyZWY9IiM3YTAycXFnM2phIi8+CiAgICA8L2c+Cjwvc3ZnPgo=" alt="접기" />
                             </div>
                         </div>
-                        {carts.map( (cart) => {
-                            return <CartProduct carts={carts} cart={cart} />
-                        })}
+                        {carts
+                            .filter(cart => cart.keep === 'cold')
+                            .map((cart) => {
+                                return <CartProduct carts={carts} cart={cart} setCarts={setCarts} getNowQuantity={getNowQuantity} />
+                            })
+                        }
                         <div className={styles.productType}>
                             <div className={styles.productTypeTitle}>
                                 <span className={styles.freezeTypeImg}></span>
@@ -40,7 +58,12 @@ function Cart( { carts, }) {
                                 <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHZpZXdCb3g9IjAgMCAzMCAzMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8ZGVmcz4KICAgICAgICA8cGF0aCBpZD0iN2EwMnFxZzNqYSIgZD0iTTExIDEyaDl2OSIvPgogICAgPC9kZWZzPgogICAgPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8cGF0aCBkPSJNMCAwaDMwdjMwSDB6Ii8+CiAgICAgICAgPHVzZSBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InNxdWFyZSIgdHJhbnNmb3JtPSJyb3RhdGUoLTQ1IDE1LjUgMTYuNSkiIHhsaW5rOmhyZWY9IiM3YTAycXFnM2phIi8+CiAgICA8L2c+Cjwvc3ZnPgo=" alt="접기" />
                             </div>
                         </div>
-                        {/* <CartProduct /> */}
+                        {carts
+                            .filter(cart => cart.keep === 'freeze')
+                            .map((cart) => {
+                                return <CartProduct carts={carts} cart={cart} setCarts={setCarts} getNowQuantity={getNowQuantity} />
+                            })
+                        }
                         <div className={styles.productType}>
                             <div className={styles.productTypeTitle}>
                                 <span className={styles.normalTypeImg}></span>
@@ -50,7 +73,12 @@ function Cart( { carts, }) {
                                 <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHZpZXdCb3g9IjAgMCAzMCAzMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8ZGVmcz4KICAgICAgICA8cGF0aCBpZD0iN2EwMnFxZzNqYSIgZD0iTTExIDEyaDl2OSIvPgogICAgPC9kZWZzPgogICAgPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8cGF0aCBkPSJNMCAwaDMwdjMwSDB6Ii8+CiAgICAgICAgPHVzZSBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InNxdWFyZSIgdHJhbnNmb3JtPSJyb3RhdGUoLTQ1IDE1LjUgMTYuNSkiIHhsaW5rOmhyZWY9IiM3YTAycXFnM2phIi8+CiAgICA8L2c+Cjwvc3ZnPgo=" alt="접기" />
                             </div>
                         </div>
-                        {/* <CartProduct /> */}
+                        {carts
+                            .filter(cart => cart.keep === 'normal')
+                            .map((cart) => {
+                                return <CartProduct carts={carts} cart={cart} setCarts={setCarts} getNowQuantity={getNowQuantity} />
+                            })
+                        }
                     </div>
                     <div className={styles.listLine}>
                         <input type="checkbox" id="chk" />
@@ -58,8 +86,6 @@ function Cart( { carts, }) {
                         전체 선택 <Bar /> 선택삭제
                     </div>
                 </div>
-
-
                 <div className={styles.modalContainer}>
                     <div className={styles.modal}>
                         <div className={styles.modalTop}>
@@ -75,19 +101,19 @@ function Cart( { carts, }) {
                         <div className={styles.modalMiddle}>
                             <div className={styles.productPriceContainer}>
                                 <span className={styles.guideSpan}>상품금액</span>
-                                <span className={styles.paymentSpan}>1,000 원</span>
+                                <span className={styles.paymentSpan}>{sumPrice.toLocaleString('ko-KR')} 원</span>
                             </div>
                             <div className={styles.discountContainer}>
                                 <span className={styles.guideSpan}>상품할인금액</span>
-                                <span className={styles.paymentSpan}>1,000 원</span>
+                                <span className={styles.paymentSpan}>0 원</span>
                             </div>
                             <div className={styles.deliveryFeeContainer}>
                                 <span className={styles.guideSpan}>배송비</span>
-                                <span className={styles.paymentSpan}>1,000 원</span>
+                                <span className={styles.paymentSpan}>0 원</span>
                             </div>
                             <div className={styles.sumPaymentContainer}>
                                 <span className={styles.guideSpan}>결제예정금액</span>
-                                <span className={styles.sumPaymentSpan}>1,000 원</span>
+                                <span className={styles.sumPaymentSpan}>{sumPrice.toLocaleString('ko-KR')} 원</span>
                             </div>
                         </div>
                         <div className={styles.modalBottom}>

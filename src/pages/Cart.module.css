@@ -36,9 +36,9 @@
     font-family: 'Noto Sans KR','malgun gothic',AppleGothic,dotum,sans-serif;
 }
 
-.listBody{
+/* .listBody{
     border-bottom: 1px solid rgb(244, 244, 244);
-}
+} */
 
 input[type=checkbox]{
     display: none;
@@ -62,7 +62,7 @@ input[type=checkbox]:checked + label{
     border-top: 1px solid rgb(51, 51, 51);
     display: flex;
     justify-content: space-between;
-    height: 60px;
+    height: 40px;
     padding: 15px 5px 0 0px;
     font-weight: 500;
     font-size: 18px;
@@ -256,6 +256,7 @@ input[type=checkbox]:checked + label{
     background-color: #5f0080;
     border: 0 none;
     font-weight: 500;
+    font-size: 16px;
 }
 
 .orderNotice{
