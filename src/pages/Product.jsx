@@ -3,8 +3,8 @@ import { indexOf } from 'lodash';
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import QuantityCounter from '../components/QuantityCounter';
-import styles from './Product.module.css'
-import Swal from 'sweetalert2'
+import styles from './Product.module.css';
+import Swal from 'sweetalert2';
 
 
 function Product({ carts, setCarts }) {
