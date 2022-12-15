@@ -4,29 +4,37 @@ import { useState, useEffect } from 'react';
 import styles from './CartProduct.module.css'
 import CheckButton from './CheckButton';
 import QuantityCounter from './QuantityCounter';
+import { useRecoilState } from 'recoil';
+import { cartsListState } from '../recoil/cartsList';
 
-function CartProduct({ carts, cart, setCarts, getNowQuantity }) {
+function CartProduct({ cart, getNowQuantity }) {
+    const [cartsList, setCartsList] = useRecoilState(cartsListState);
+
+    // console.log('cart:', cart);
+    let cartProduct = [...cart];
+    // console.log('cp:', cartProduct);
+
     const[ counterQuantity, setCounterQuantity ] = useState(1); // Q. state 값 대신 cart.quantity 사용했는데 왜 정상작동?  state,setState 지우면 렌더링X
 
     const PlusQuantity = () => {
         setCounterQuantity(counterQuantity => counterQuantity + 1);
-        cart.quantity += 1;
-        getNowQuantity(cart.quantity);
-        // console.log('cart.quantity:', cart.quantity);
+        cartProduct.quantity += 1;
+        getNowQuantity(cartProduct.quantity);
+        console.log('cart.quantity:', cartProduct.quantity);
     }
 
     const MinusQuantity = () => {
         if (cart.quantity>=2) {
             setCounterQuantity(counterQuantity => counterQuantity - 1);
-            cart.quantity -= 1;
-            getNowQuantity(cart.quantity);
-            // console.log('cart.quantity:', cart.quantity);
+            cartProduct.quantity -= 1;
+            getNowQuantity(cartProduct.quantity);
+            console.log('cart.quantity:', cartProduct.quantity);
         }
         else return;
     }
 
     const removeFromCart = (id) => {
-        setCarts(carts.filter( (el) => el.id !== cart.id ));
+        setCartsList(cartsList.filter( (el) => el.id !== cart.id ));
         // console.log('remove!');
     }
     // console.log('carts:', carts);

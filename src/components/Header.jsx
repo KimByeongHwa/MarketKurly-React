@@ -6,8 +6,10 @@ import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import { throttle } from 'lodash';
 import ModeChanger from './ModeChanger';
+import { useRecoilValue } from 'recoil';
+import { cartsListState } from '../recoil/cartsList';
 
-function Header( {carts} ) {
+function Header( props ) {
     // 스크롤에 따른 <Header /> 변환을 위한 코드 Start
     const [scrollPosition, setScrollPosition] = useState(0); // scrollPosition을 변화시킬 state로 정의.
     
@@ -38,9 +40,11 @@ function Header( {carts} ) {
     // 스크롤에 따른 <Header /> 변환을 위한 코드 End
 
 
-
     const[isHover, setIsHover] = useState(false);
 
+    const cartsList = useRecoilValue(cartsListState);
+    // console.log(cartsList);
+    // console.log(cartsList.length);
 
     return (
         <div className={styles.header}>
@@ -72,8 +76,8 @@ function Header( {carts} ) {
                             <div className={styles.buttonContainer}>
                                 <Link to='Cart'>
                                     <button className={styles.cartButton}>
-                                        { carts.length >= 1 ? (
-                                            <span className={styles.cartCount}> {carts.length} </span>
+                                        { cartsList.length >= 1 ? (
+                                            <span className={styles.cartCount}> {cartsList.length} </span>
                                         ) : (
                                             ""
                                         )}
@@ -131,8 +135,8 @@ function Header( {carts} ) {
                             <div className={styles.buttonContainer}>  
                                 <Link to='Cart'>                            
                                     <button className={styles.cartButton}>
-                                        { carts.length >= 1 ? (
-                                            <span className={styles.cartCount}> {carts.length} </span>
+                                        { cartsList.length >= 1 ? (
+                                            <span className={styles.cartCount}> {cartsList.length} </span>
                                         ) : (
                                                 ""
                                         )}

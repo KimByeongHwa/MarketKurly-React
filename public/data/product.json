@@ -10,8 +10,7 @@
         "delivery": "샛별배송",
         "packaging": "냉장",
         "keep": "cold",
-        "unit": "1개",
-        "checked": true
+        "unit": "1개"
     },
     {
         "id": 2,
@@ -24,8 +23,7 @@
         "delivery": "샛별배송",
         "packaging": "상온",
         "keep": "normal",
-        "unit": "1개",
-        "checked": true
+        "unit": "1개"
     },
      {
         "id": 3,
@@ -38,8 +36,7 @@
         "delivery": "샛별배송",
         "packaging": "상온",
         "keep": "normal",
-        "unit": "1개",
-        "checked": true
+        "unit": "1개"
      },
      {
         "id": 4,
@@ -52,8 +49,7 @@
         "delivery": "샛별배송",
         "packaging": "냉장",
         "keep": "cold",
-        "unit": "1개",
-        "checked": true
+        "unit": "1개"
     },
      {
         "id": 5,
@@ -66,8 +62,7 @@
         "delivery": "샛별배송",
         "packaging": "상온",
         "keep": "normal",
-        "unit": "1개",
-        "checked": true
+        "unit": "1개"
      },
      {
         "id": 6,
@@ -80,8 +75,7 @@
         "delivery": "샛별배송",
         "packaging": "냉동",
         "keep": "freeze",
-        "unit": "1개",
-        "checked": true
+        "unit": "1개"
     },
     {
         "id": 7,
@@ -94,8 +88,7 @@
         "delivery": "샛별배송",
         "packaging": "냉장",
         "keep": "cold",
-        "unit": "1개",
-        "checked": true
+        "unit": "1개"
     },
   {
         "id": 8,
@@ -108,8 +101,7 @@
         "delivery": "샛별배송",
         "packaging": "냉장",
         "keep": "cold",
-        "unit": "300g",
-        "checked": true
+        "unit": "300g"
   },
   {
         "id": 9,
@@ -122,8 +114,7 @@
         "delivery": "샛별배송",
         "packaging": "상온",
         "keep": "normal",
-        "unit": "1개",
-        "checked": true
+        "unit": "1개"
  },
   {
         "id": 10,
@@ -136,8 +127,7 @@
         "delivery": "샛별배송",
         "packaging": "냉장",
         "keep": "normal",
-        "unit": "1개",
-        "checked": true
+        "unit": "1개"
   },
   {
         "id": 11,
@@ -150,8 +140,7 @@
         "delivery": "샛별배송",
         "packaging": "냉동",
         "keep": "freeze",
-        "unit": "1개",
-        "checked": true
+        "unit": "1개"
   },
   {
         "id": 12,
@@ -164,7 +153,6 @@
         "delivery": "샛별배송",
         "packaging": "상온",
         "keep": "normal",
-        "unit": "1개",
-        "checked": true
+        "unit": "1개"
     }
 ]
