@@ -41,7 +41,7 @@ function SignIn(props) {
                         로그인
                     </button>
                     <button className={styles.signUpButton}>
-                        <Link to='/signup'>회원가입</Link>
+                        <Link to='/SignUp'>회원가입</Link>
                     </button>
                 </div>
             </div>
