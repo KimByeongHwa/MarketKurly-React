@@ -6,29 +6,43 @@ import CheckButton from './CheckButton';
 import QuantityCounter from './QuantityCounter';
 import { useRecoilState } from 'recoil';
 import { cartsListState } from '../recoil/cartsList';
+import { useParams } from 'react-router-dom';
 
-function CartProduct({ cart, getNowQuantity }) {
+
+function CartProduct({ cart, getNowQuantity}) {
     const [cartsList, setCartsList] = useRecoilState(cartsListState);
+    
+    console.log('cartList:', cartsList)
+    console.log('cart:', cart);
+    
+    // const cartProduct = ([ ...cart]);
+    // const cartProduct = cartsList.filter( (el) => el.id === cart.id)[0];
 
-    // console.log('cart:', cart);
-    let cartProduct = [...cart];
-    // console.log('cp:', cartProduct);
+    // let iterableCart = cart[Symbol.iterator];
+    // console.log('iterableCart:', iterableCart);
 
-    const[ counterQuantity, setCounterQuantity ] = useState(1); // Q. state 값 대신 cart.quantity 사용했는데 왜 정상작동?  state,setState 지우면 렌더링X
+    // let testCart = [...iterableCart];
+    // console.log(testCart);
+
+    // console.log('cartProduct:', cartProduct);
+    
+    
+
+    const[ counterQuantity, setCounterQuantity ] = useState(1);
 
     const PlusQuantity = () => {
         setCounterQuantity(counterQuantity => counterQuantity + 1);
-        cartProduct.quantity += 1;
-        getNowQuantity(cartProduct.quantity);
-        console.log('cart.quantity:', cartProduct.quantity);
+        cart.quantity += 1;
+        getNowQuantity(cart.quantity);
+        console.log('cart.quantity:', cart.quantity);
     }
 
     const MinusQuantity = () => {
         if (cart.quantity>=2) {
             setCounterQuantity(counterQuantity => counterQuantity - 1);
-            cartProduct.quantity -= 1;
-            getNowQuantity(cartProduct.quantity);
-            console.log('cart.quantity:', cartProduct.quantity);
+            cart.quantity -= 1;
+            getNowQuantity(cart.quantity);
+            console.log('cart.quantity:', cart.quantity);
         }
         else return;
     }

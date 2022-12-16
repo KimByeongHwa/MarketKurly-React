@@ -5,22 +5,15 @@ import CheckButton from '../components/CheckButton';
 import CartProduct from '../components/CartProduct';
 import styles from './Cart.module.css'
 import styled from 'styled-components'
-import { useRecoilState } from 'recoil';
+import { selector, useRecoilState, useRecoilValue } from 'recoil';
 import { cartsListState } from '../recoil/cartsList';
-import { cartState } from '../recoil/cart';
 
 function Cart(props) {
-    const [cartsList, setCartsList] = useRecoilState(cartsListState);
-    const [cart, setCart] = useRecoilState(cartState);
+    // const [cartsList, setCartsList] = useRecoilState(cartsListState);
+    const cartsList = useRecoilValue(cartsListState);
+    // console.log('cartList:', cartsList);
+    // const [cart, setCart] = useRecoilState(cartState);
 
-    setCart(() => {
-        cartsList
-            .filter(cart => cart.keep === 'cold')
-            .map((cart) => {
-                return cart;
-            })
-    })
-    
     // console.log(carts);
     const [nowQuantity, setNowQuantity] = useState();
 
@@ -37,12 +30,6 @@ function Cart(props) {
     },0)
 
     // console.log(cart);
-
-    // const coldProduct = cartsList
-    //     .filter(cart => cart.keep === 'cold')
-    //     .map((cart) => {
-    //         return <CartProduct cart={cart} getNowQuantity={getNowQuantity} />
-    //     })
     
 
     return (

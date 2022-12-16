@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { atom } from "recoil"
 
 export const cartsListState = atom({

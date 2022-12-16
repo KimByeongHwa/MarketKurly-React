@@ -1,6 +1,10 @@
-import { selector } from "recoil";
+/* eslint-disable */
+import { selector, selectorFamily } from "recoil";
+import { cartsListState } from "./cartsList";
 
-export const cartState = selector({
-    key: "cartState",
-    default: []
+export const cartSelector = selectorFamily({
+    key: 'cartSelector',
+    get: ({ get }) => {
+        get(cartsListState).filter( (el) => el.id === cart.id);
+    }
 })
