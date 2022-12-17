@@ -5,23 +5,28 @@ import CheckButton from '../components/CheckButton';
 import CartProduct from '../components/CartProduct';
 import styles from './Cart.module.css'
 import styled from 'styled-components'
+import { useRecoilState } from 'recoil';
+import { cartsListAtom } from '../recoil/cartsList';
 
-function Cart( { carts, setCarts }) {
-
-    // console.log(carts);
+function Cart( props ) {
+    const [cartsList, setCartsList] = useRecoilState(cartsListAtom);
+    
     const [nowQuantity, setNowQuantity] = useState();
 
     const getNowQuantity = (changedQuantity) => {
         setNowQuantity(changedQuantity);
     }
 
-    const sumPrice = carts.reduce((accumulator, cart) => {
+    const sumPrice = cartsList.reduce((accumulator, cart) => {
         // console.log('acc:', accumulator);
         // console.log('cart.price:', cart.price);
         // console.log('cart.quantity', cart.quantity);
         // console.log('1result:', cart.price*cart.quantity);   // cart.quantity 를 state값으로 정의해서 자식에서 변화된 값을 가져와야함. 이를 상단에 있는 getNowQuantity로 구현하였음.
         return accumulator + (cart.price*cart.quantity);
     },0)
+
+    // console.log(cart);
+    
 
     return (
         <div className={styles.Cart}>
@@ -43,10 +48,10 @@ function Cart( { carts, setCarts }) {
                                 <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHZpZXdCb3g9IjAgMCAzMCAzMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8ZGVmcz4KICAgICAgICA8cGF0aCBpZD0iN2EwMnFxZzNqYSIgZD0iTTExIDEyaDl2OSIvPgogICAgPC9kZWZzPgogICAgPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8cGF0aCBkPSJNMCAwaDMwdjMwSDB6Ii8+CiAgICAgICAgPHVzZSBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InNxdWFyZSIgdHJhbnNmb3JtPSJyb3RhdGUoLTQ1IDE1LjUgMTYuNSkiIHhsaW5rOmhyZWY9IiM3YTAycXFnM2phIi8+CiAgICA8L2c+Cjwvc3ZnPgo=" alt="접기" />
                             </div>
                         </div>
-                        {carts
+                        {cartsList
                             .filter(cart => cart.keep === 'cold')
                             .map((cart) => {
-                                return <CartProduct carts={carts} cart={cart} setCarts={setCarts} getNowQuantity={getNowQuantity} />
+                                return <CartProduct cart={cart} getNowQuantity={getNowQuantity} />
                             })
                         }
                         <div className={styles.productType}>
@@ -58,10 +63,10 @@ function Cart( { carts, setCarts }) {
                                 <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHZpZXdCb3g9IjAgMCAzMCAzMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8ZGVmcz4KICAgICAgICA8cGF0aCBpZD0iN2EwMnFxZzNqYSIgZD0iTTExIDEyaDl2OSIvPgogICAgPC9kZWZzPgogICAgPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8cGF0aCBkPSJNMCAwaDMwdjMwSDB6Ii8+CiAgICAgICAgPHVzZSBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InNxdWFyZSIgdHJhbnNmb3JtPSJyb3RhdGUoLTQ1IDE1LjUgMTYuNSkiIHhsaW5rOmhyZWY9IiM3YTAycXFnM2phIi8+CiAgICA8L2c+Cjwvc3ZnPgo=" alt="접기" />
                             </div>
                         </div>
-                        {carts
+                        {cartsList
                             .filter(cart => cart.keep === 'freeze')
                             .map((cart) => {
-                                return <CartProduct carts={carts} cart={cart} setCarts={setCarts} getNowQuantity={getNowQuantity} />
+                                return <CartProduct cart={cart} getNowQuantity={getNowQuantity} />
                             })
                         }
                         <div className={styles.productType}>
@@ -73,10 +78,10 @@ function Cart( { carts, setCarts }) {
                                 <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHZpZXdCb3g9IjAgMCAzMCAzMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8ZGVmcz4KICAgICAgICA8cGF0aCBpZD0iN2EwMnFxZzNqYSIgZD0iTTExIDEyaDl2OSIvPgogICAgPC9kZWZzPgogICAgPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8cGF0aCBkPSJNMCAwaDMwdjMwSDB6Ii8+CiAgICAgICAgPHVzZSBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InNxdWFyZSIgdHJhbnNmb3JtPSJyb3RhdGUoLTQ1IDE1LjUgMTYuNSkiIHhsaW5rOmhyZWY9IiM3YTAycXFnM2phIi8+CiAgICA8L2c+Cjwvc3ZnPgo=" alt="접기" />
                             </div>
                         </div>
-                        {carts
+                        {cartsList
                             .filter(cart => cart.keep === 'normal')
                             .map((cart) => {
-                                return <CartProduct carts={carts} cart={cart} setCarts={setCarts} getNowQuantity={getNowQuantity} />
+                                return <CartProduct cart={cart} getNowQuantity={getNowQuantity} />
                             })
                         }
                     </div>

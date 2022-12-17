@@ -1,13 +1,14 @@
 /* eslint-disable */
-import { indexOf } from 'lodash';
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import QuantityCounter from '../components/QuantityCounter';
 import styles from './Product.module.css';
 import Swal from 'sweetalert2';
+import { useRecoilState } from 'recoil';
+import { cartsListAtom } from '../recoil/cartsList';
 
 
-function Product({ carts, setCarts }) {
+function Product(props) {
     const {id} = useParams();
     // console.log('id:', id);
     
@@ -35,9 +36,12 @@ function Product({ carts, setCarts }) {
         setCount(count);             
     }
 
+    const [cartsList, setCartsList] = useRecoilState(cartsListAtom);
+    // console.log(cartsList.length);
+
     const setQuantity = (id, quantity) => {
-        const found = carts.filter((el) => el.id === id)[0];
-        const idx = carts.indexOf(found);
+        const found = cartsList.filter((el) => el.id === id)[0];
+        const idx = cartsList.indexOf(found);
         const cartItem = {
             id: product.id,
             name: product.name,
@@ -50,7 +54,7 @@ function Product({ carts, setCarts }) {
             checked: true
         };
 
-        setCarts([ ...carts.slice(0, idx), cartItem, ...carts.slice(idx+1) ]);
+        setCartsList([ ...cartsList.slice(0, idx), cartItem, ...cartsList.slice(idx+1) ]);
         Swal.fire({
             text: '장바구니에 추가되었습니다.',
             confirmButtonText: '확인',
@@ -71,13 +75,13 @@ function Product({ carts, setCarts }) {
             checked: true
         };
 
-        const found = carts.find((el) => el.id === cartItem.id);     // filter쓰면 quantity: NaN 뜸
+        const found = cartsList.find((el) => el.id === cartItem.id);     // filter쓰면 quantity: NaN 뜸
 
         if(found) {
             setQuantity( cartItem.id, found.quantity + count );
             // console.log('fonud:',found);
         } else {
-            setCarts([...carts, cartItem]);
+            setCartsList([...cartsList, cartItem]);
             Swal.fire({
                 text: '장바구니에 추가되었습니다.',
                 confirmButtonText: '확인',
@@ -87,7 +91,6 @@ function Product({ carts, setCarts }) {
         }
     }
     // console.log('carts', carts);
-    
 
     const PlusQuantity = () => {
         getCount(count => count + 1);
