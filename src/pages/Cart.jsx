@@ -5,16 +5,12 @@ import CheckButton from '../components/CheckButton';
 import CartProduct from '../components/CartProduct';
 import styles from './Cart.module.css'
 import styled from 'styled-components'
-import { selector, useRecoilState, useRecoilValue } from 'recoil';
-import { cartsListState } from '../recoil/cartsList';
+import { useRecoilState } from 'recoil';
+import { cartsListAtom } from '../recoil/cartsList';
 
-function Cart(props) {
-    // const [cartsList, setCartsList] = useRecoilState(cartsListState);
-    const cartsList = useRecoilValue(cartsListState);
-    // console.log('cartList:', cartsList);
-    // const [cart, setCart] = useRecoilState(cartState);
-
-    // console.log(carts);
+function Cart( props ) {
+    const [cartsList, setCartsList] = useRecoilState(cartsListAtom);
+    
     const [nowQuantity, setNowQuantity] = useState();
 
     const getNowQuantity = (changedQuantity) => {

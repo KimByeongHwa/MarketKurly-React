@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { throttle } from 'lodash';
 import ModeChanger from './ModeChanger';
 import { useRecoilValue } from 'recoil';
-import { cartsListState } from '../recoil/cartsList';
+import { cartsListAtom } from '../recoil/cartsList';
 
 function Header( props ) {
     // 스크롤에 따른 <Header /> 변환을 위한 코드 Start
@@ -42,7 +42,7 @@ function Header( props ) {
 
     const[isHover, setIsHover] = useState(false);
 
-    const cartsList = useRecoilValue(cartsListState);
+    const cartsList = useRecoilValue(cartsListAtom);
     // console.log(cartsList);
     // console.log(cartsList.length);
 

@@ -5,7 +5,7 @@ import QuantityCounter from '../components/QuantityCounter';
 import styles from './Product.module.css';
 import Swal from 'sweetalert2';
 import { useRecoilState } from 'recoil';
-import { cartsListState } from '../recoil/cartsList';
+import { cartsListAtom } from '../recoil/cartsList';
 
 
 function Product(props) {
@@ -36,7 +36,7 @@ function Product(props) {
         setCount(count);             
     }
 
-    const [cartsList, setCartsList] = useRecoilState(cartsListState);
+    const [cartsList, setCartsList] = useRecoilState(cartsListAtom);
     // console.log(cartsList.length);
 
     const setQuantity = (id, quantity) => {

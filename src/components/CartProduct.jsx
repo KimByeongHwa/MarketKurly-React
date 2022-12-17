@@ -1,48 +1,40 @@
 /* eslint-disable */
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { useRecoilState } from 'recoil';
+import { cartsListAtom } from '../recoil/cartsList';
 import styles from './CartProduct.module.css'
 import CheckButton from './CheckButton';
 import QuantityCounter from './QuantityCounter';
-import { useRecoilState } from 'recoil';
-import { cartsListState } from '../recoil/cartsList';
-import { useParams } from 'react-router-dom';
 
+// 1. e.target을 통해 현재 아이템의 id를 얻는다. => 걍 cart.id 쓰면 됨.
+// 2. map을 걸어 id검사를 하고, 일치하면 setCartsList를 통해 cart.quantity 변경
+function CartProduct({ cart, getNowQuantity }) {
+    const [cartsList, setCartsList] = useRecoilState(cartsListAtom); 
+    const [counterQuantity, setCounterQuantity ] = useState(1);
 
-function CartProduct({ cart, getNowQuantity}) {
-    const [cartsList, setCartsList] = useRecoilState(cartsListState);
-    
-    console.log('cartList:', cartsList)
-    console.log('cart:', cart);
-    
-    // const cartProduct = ([ ...cart]);
-    // const cartProduct = cartsList.filter( (el) => el.id === cart.id)[0];
-
-    // let iterableCart = cart[Symbol.iterator];
-    // console.log('iterableCart:', iterableCart);
-
-    // let testCart = [...iterableCart];
-    // console.log(testCart);
-
-    // console.log('cartProduct:', cartProduct);
-    
-    
-
-    const[ counterQuantity, setCounterQuantity ] = useState(1);
-
+    console.log(cart);
     const PlusQuantity = () => {
         setCounterQuantity(counterQuantity => counterQuantity + 1);
-        cart.quantity += 1;
-        getNowQuantity(cart.quantity);
-        console.log('cart.quantity:', cart.quantity);
+        setCartsList( prev =>{
+            return prev.map( matchingCart => {
+                if (matchingCart.id === cart.id){
+                    return { ...cart, quantity: matchingCart.quantity + 1 };
+                }
+            })
+        });
     }
 
     const MinusQuantity = () => {
         if (cart.quantity>=2) {
             setCounterQuantity(counterQuantity => counterQuantity - 1);
-            cart.quantity -= 1;
-            getNowQuantity(cart.quantity);
-            console.log('cart.quantity:', cart.quantity);
+            setCartsList( prev =>{
+                return prev.map( matchingCart => {
+                    if (matchingCart.id === cart.id){
+                        return { ...cart, quantity: matchingCart.quantity - 1 };
+                    }
+                })
+            });
         }
         else return;
     }

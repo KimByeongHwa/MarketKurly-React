@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { atom } from "recoil"
 
-export const cartsListState = atom({
-    key: "cartsListState",
+export const cartsListAtom = atom({
+    key: "cartsListAtom",
     default: []
 });
