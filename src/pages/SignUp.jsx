@@ -1,9 +1,85 @@
 /* eslint-disable */
 import React from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import RadioButton from '../components/RadioButton';
 
 function SignUp(props) {
+    const [id, setId] = useState('');
+    const [password, setPassword] = useState('');
+    const [passwordConfirm, setPasswordConfrim] = useState('');
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+
+    const [idMessage, setIdMessage] = useState('');
+    const [passwordMessage, setPasswordMessage] = useState('');
+    const [passwordConfirmMessage, setPasswordConfirmMessage] = useState('');
+    const [nameMessage, setNameMessage] = useState('');
+    const [emailMessage, setEmailMessage] = useState('');
+    const [phoneNumberMessage, setPhoneNumberMessage] = useState('');
+
+    const [isId, setIsId] = useState(false);
+    const [isPassword, setIsPassword] = useState(false);
+    const [isPasswordConfirm, setIsPasswordConfrim] = useState(false);
+    const [isName, setIsName] = useState(false);
+    const [isEmail, setIsEmail] = useState(false);
+    const [isPhoneNumber, setIsPhoneNumber] = useState(false);
+
+    const onChangeId = (e) => {
+        const idRegExp = /^[A-Za-z0-9]{6,16}$/;
+        const currentId = e.target.value;
+        setId(currentId);
+        
+        if (!idRegExp.test(currentId)) {
+            setIdMessage('6자 이상 16자 이하의 영문 혹은 영문과 숫자를 조합');
+            setIsId(false);
+        } 
+        else setIsId(true);
+
+        console.log(currentId);
+        console.log(isId);
+    }
+
+    const onChangePassword = (e) => {
+        const passwordRegExp = /^(?!((?:[A-Za-z]+)|(?:[~!@#$%^&*()_+=]+)|(?:[0-9]+))$)[A-Za-z\d~!@#$%^&*()_+=]{10,}$/;
+        const currentPassword = e.target.value;
+        setPassword(currentPassword);
+
+        if (!passwordRegExp.test(currentPassword)){
+            setIsPassword(false);
+            if( password.length >= 1 && password.length < 10) setPasswordMessage('최소 10자 이상 입력');
+            else setPasswordMessage('영문/숫자/특수문자(공백 제외)만 허용하며, 2개 이상 조합');
+        }
+        else setIsPassword(true);
+
+        console.log(currentPassword);
+        console.log(isPassword);
+    }
+
+    const onChangePasswordConfirm = (e) => {
+        const currentPasswordConfirm = e.target.value;
+        setPasswordConfrim(currentPasswordConfirm);
+
+        if( passwordConfirm === password) setIsPasswordConfrim(true)    
+        else{
+            setPasswordConfrim(false);
+            setPasswordConfirmMessage('동일한 비밀번호를 입력')
+        }
+    }
+
+    const onChangeEmail = (e) => {
+        const emailRegExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    }
+
+    const passwordGuideMessage = () => {
+        if(password.length > 0  && isPassword === false){
+            if(password.length >= 1 && password.length < 10 ){ 
+                return <GuideMessage>최소 10자 이상 입력</GuideMessage>
+            }
+            else return <GuideMessage>영문/숫자/특수문자(공백 제외)만 허용하며, 2개 이상 조합</GuideMessage>
+        }
+    }
     return (
         <SignUpSection>
             <Inner>
@@ -13,16 +89,23 @@ function SignUp(props) {
                 </TopLine>
                 <Tr>
                     <List>아이디<Star>*</Star></List>
-                    <Input type='text' placeholder='아이디를 입력해주세요.'></Input>
+                    <InputLabel>
+                        <Input type='text' id={id} value={id} onChange={onChangeId} placeholder='아이디를 입력해주세요.'></Input>
+                        { (id.length > 0) && (isId === false) && <GuideMessage>{idMessage}</GuideMessage>}
+                    </InputLabel>
                     <DoubleCheckButton>중복확인</DoubleCheckButton>
                 </Tr>
                 <Tr>
                     <List>비밀번호<Star>*</Star></List>
-                    <Input type='text' placeholder='비밀번호를 입력해주세요.'></Input>
+                    <InputLabel>
+                        <Input type='password' password={password} value={password} onChange={onChangePassword} placeholder='비밀번호를 입력해주세요.'></Input>
+                        { (password.length > 0) && (isPassword === false) && <GuideMessage>{passwordMessage}</GuideMessage>}
+                    </InputLabel>
                 </Tr>
                 <Tr>
                     <List>비밀번호 확인<Star>*</Star></List>
-                    <Input type='text' placeholder='비밀번호를 한번 더 입력해주세요.'></Input>           
+                    <Input type='password' passwordConfirm={passwordConfirm} value={passwordConfirm} onChange={onChangePasswordConfirm} placeholder='비밀번호를 한번 더 입력해주세요.'></Input>           
+                    { (passwordConfirm.length > 0) && (isPassword === false) && <GuideMessage>{passwordConfirmMessage}</GuideMessage>}
                 </Tr>
                 <Tr>
                     <List>이름<Star>*</Star></List>
@@ -213,6 +296,9 @@ const List = styled.span`
     color: rgb(51, 51, 51);
 `
 
+const InputLabel = styled.div`
+
+`
 const Input = styled.input`
     width: 335px;
     height: 46px;
@@ -230,6 +316,13 @@ const Input = styled.input`
         border-color: black;
     }
 `
+
+const GuideMessage = styled.p`
+    font-size: 13px;
+    color: rgb(240, 63, 64);
+    padding: 10px 0px;
+`
+
 const DoubleCheckButton = styled.button`
     font-weight: 500;
     font-size: 14px;
