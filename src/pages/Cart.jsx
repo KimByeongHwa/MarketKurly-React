@@ -51,7 +51,7 @@ function Cart( props ) {
                         {cartsList
                             .filter(cart => cart.keep === 'cold')
                             .map((cart) => {
-                                return <CartProduct cart={cart} getNowQuantity={getNowQuantity} />
+                                return <CartProduct cart={cart} />
                             })
                         }
                         <div className={styles.productType}>
@@ -66,7 +66,7 @@ function Cart( props ) {
                         {cartsList
                             .filter(cart => cart.keep === 'freeze')
                             .map((cart) => {
-                                return <CartProduct cart={cart} getNowQuantity={getNowQuantity} />
+                                return <CartProduct cart={cart} />
                             })
                         }
                         <div className={styles.productType}>
@@ -81,7 +81,7 @@ function Cart( props ) {
                         {cartsList
                             .filter(cart => cart.keep === 'normal')
                             .map((cart) => {
-                                return <CartProduct cart={cart} getNowQuantity={getNowQuantity} />
+                                return <CartProduct cart={cart} />
                             })
                         }
                     </div>
