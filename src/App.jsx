@@ -12,6 +12,10 @@ import SignIn from './pages/SiginIn.jsx';
 import Cart from './pages/Cart.jsx'
 import Product from './pages/Product.jsx';
 import ScrollToTop from './components/ScrollToTop.jsx';
+import { Mobile, PC } from './mediaquery/MediaQuery.jsx';
+import MobileHeader from './components/MobileHeader.jsx';
+import MobileFooter from './components/MobileFooter.jsx';
+import MobileHome from './pages/MobileHome.jsx';
 
 function App() {
 
@@ -21,6 +25,7 @@ function App() {
       <GlobalStyle />
       <BrowserRouter>
       <ScrollToTop />
+      <PC>
         <Header />
         <Routes>
           <Route path='/' element={<Home />} />
@@ -31,6 +36,14 @@ function App() {
           <Route path='/Product/:id' element={<Product />} />
         </Routes>
         <Footer />
+      </PC>
+      <Mobile>
+        <MobileHeader />
+          <Routes>
+            <Route path='/' element={<MobileHome />} />
+          </Routes>
+        <MobileFooter />
+      </Mobile>
       </BrowserRouter>
     </>
   );
