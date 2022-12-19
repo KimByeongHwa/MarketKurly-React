@@ -2,6 +2,7 @@
 import React from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
+import CheckButton from '../components/CheckButton';
 import RadioButton from '../components/RadioButton';
 
 function SignUp(props) {
@@ -32,7 +33,7 @@ function SignUp(props) {
         setId(currentId);
         
         if (!idRegExp.test(currentId)) {
-            setIdMessage('6자 이상 16자 이하의 영문 혹은 영문과 숫자를 조합');
+            setIdMessage('6자 이상 16자 이하의 영문 혹은 영문과 숫자를 조합해주세요.');
             setIsId(false);
         } 
         else setIsId(true);
@@ -48,38 +49,62 @@ function SignUp(props) {
 
         if (!passwordRegExp.test(currentPassword)){
             setIsPassword(false);
-            if( password.length >= 1 && password.length < 10) setPasswordMessage('최소 10자 이상 입력');
-            else setPasswordMessage('영문/숫자/특수문자(공백 제외)만 허용하며, 2개 이상 조합');
+            if( currentPassword.length >= 1 && currentPassword.length < 10) setPasswordMessage('최소 10자 이상 입력해주세요.');
+            else setPasswordMessage('영문/숫자/특수문자(공백 제외)만 허용하며, 2개 이상을 조합해주세요.');
         }
         else setIsPassword(true);
 
-        console.log(currentPassword);
-        console.log(isPassword);
+        // console.log(currentPassword);
+        // console.log(currentPassword.length);
+        // console.log(isPassword);
     }
 
     const onChangePasswordConfirm = (e) => {
         const currentPasswordConfirm = e.target.value;
         setPasswordConfrim(currentPasswordConfirm);
 
-        if( passwordConfirm === password) setIsPasswordConfrim(true)    
+        if( currentPasswordConfirm === password) setIsPasswordConfrim(true)    
         else{
-            setPasswordConfrim(false);
-            setPasswordConfirmMessage('동일한 비밀번호를 입력')
+            setIsPasswordConfrim(false);
+            setPasswordConfirmMessage('동일한 비밀번호를 입력해주세요.')
         }
+
+        // console.log(currentPasswordConfirm);
+        // console.log(isPasswordConfirm);
+    }
+
+    const onChangeName = (e) => {
+        const currentName = e.target.value;
+        setName(currentName);
     }
 
     const onChangeEmail = (e) => {
         const emailRegExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        const currentEmail = e.target.value;
+        setEmail(currentEmail);
+
+        if(!emailRegExp.test(currentEmail)){
+            setIsEmail(false);
+            setEmailMessage('이메일 형식으로 입력해 주세요.');
+        }
+        else setIsEmail(true);
     }
 
-    const passwordGuideMessage = () => {
-        if(password.length > 0  && isPassword === false){
-            if(password.length >= 1 && password.length < 10 ){ 
-                return <GuideMessage>최소 10자 이상 입력</GuideMessage>
-            }
-            else return <GuideMessage>영문/숫자/특수문자(공백 제외)만 허용하며, 2개 이상 조합</GuideMessage>
+    const onChangePhoneNumber = (e) => {
+        const phoneNumberRegExp = /^[0-9]{3}[0-9]{4}[0-9]{4}/;
+        const currentPhoneNumber = e.target.value;
+        setPhoneNumber(currentPhoneNumber);
+
+        if(!phoneNumberRegExp.test(currentPhoneNumber)){
+            setIsPhoneNumber(false);
+            setPhoneNumberMessage('휴대폰 번호를 입력해주세요.');
         }
+        else setIsPhoneNumber(true);
+
+        // console.log(currentPhoneNumber);
+        // console.log(isPhoneNumber);
     }
+
     return (
         <SignUpSection>
             <Inner>
@@ -91,7 +116,7 @@ function SignUp(props) {
                     <List>아이디<Star>*</Star></List>
                     <InputLabel>
                         <Input type='text' id={id} value={id} onChange={onChangeId} placeholder='아이디를 입력해주세요.'></Input>
-                        { (id.length > 0) && (isId === false) && <GuideMessage>{idMessage}</GuideMessage>}
+                        {(id.length > 0) && (isId === false) && <GuideMessage>{idMessage}</GuideMessage>}
                     </InputLabel>
                     <DoubleCheckButton>중복확인</DoubleCheckButton>
                 </Tr>
@@ -99,26 +124,34 @@ function SignUp(props) {
                     <List>비밀번호<Star>*</Star></List>
                     <InputLabel>
                         <Input type='password' password={password} value={password} onChange={onChangePassword} placeholder='비밀번호를 입력해주세요.'></Input>
-                        { (password.length > 0) && (isPassword === false) && <GuideMessage>{passwordMessage}</GuideMessage>}
+                        {(password.length > 0) && (isPassword === false) && <GuideMessage>{passwordMessage}</GuideMessage>}
                     </InputLabel>
                 </Tr>
                 <Tr>
                     <List>비밀번호 확인<Star>*</Star></List>
-                    <Input type='password' passwordConfirm={passwordConfirm} value={passwordConfirm} onChange={onChangePasswordConfirm} placeholder='비밀번호를 한번 더 입력해주세요.'></Input>           
-                    { (passwordConfirm.length > 0) && (isPassword === false) && <GuideMessage>{passwordConfirmMessage}</GuideMessage>}
+                    <InputLabel>
+                        <Input type='password' passwordConfirm={passwordConfirm} value={passwordConfirm} onChange={onChangePasswordConfirm} placeholder='비밀번호를 한번 더 입력해주세요.'></Input>           
+                        {(passwordConfirm.length > 0) && (isPasswordConfirm === false) && <GuideMessage>{passwordConfirmMessage}</GuideMessage>}
+                    </InputLabel>
                 </Tr>
                 <Tr>
                     <List>이름<Star>*</Star></List>
-                    <Input type='text' placeholder='이름을 입력해주세요.'></Input>
+                    <Input type='text' name={name} value={name} onChange={onChangeName} placeholder='이름을 입력해주세요.'></Input>
                 </Tr>
                 <Tr>
                     <List>이메일<Star>*</Star></List>
-                    <Input type='text' placeholder='marketkurly@kurly.com'></Input>
+                    <InputLabel>
+                        <Input type='email' email={email} value={email} onChange={onChangeEmail} placeholder='marketkurly@kurly.com'></Input>
+                        {(email.length > 0) && (isEmail === false) && <GuideMessage>{emailMessage}</GuideMessage>}
+                    </InputLabel>
                     <DoubleCheckButton>중복확인</DoubleCheckButton>
                 </Tr>
                 <Tr>
                     <List>휴대폰<Star>*</Star></List>
-                    <Input type='text' placeholder='숫자만 입력해주세요.'></Input>
+                    <InputLabel>
+                        <Input type='text' phoneNumber={phoneNumber} value={phoneNumber} onChange={onChangePhoneNumber} maxLength="11" placeholder='숫자만 입력해주세요.'></Input>
+                        {(phoneNumber.length > 0) && (isPhoneNumber === false) && <GuideMessage>{phoneNumberMessage}</GuideMessage>}
+                    </InputLabel>
                     <DoubleCheckButton>인증번호 받기</DoubleCheckButton>
                 </Tr>
                 <Tr>
@@ -134,9 +167,9 @@ function SignUp(props) {
                 <Tr>
                     <List>성별</List>
                     <GenderContainer>
-                       <RadioButton name='gender' value='man' text='남성'></RadioButton>
-                       <RadioButton name='gender' value='woman' text='여성'></RadioButton>
-                       <RadioButton name='gender' value='choiceNone' text='선택안함' checked></RadioButton>
+                       <RadioButton id='man' name='gender' value='man' text='남성' />
+                       <RadioButton id='woman' name='gender' value='woman' text='여성'></RadioButton>
+                       <RadioButton id='choiceNone' name='gender' value='choiceNone' text='선택안함'></RadioButton>
                     </GenderContainer>
                 </Tr>
                 <Tr>
@@ -158,8 +191,8 @@ function SignUp(props) {
                 <Tr>
                     <List>추가입력 사항</List>
                     <ExtraContainer>
-                        <RadioButton type='radio' text='친구초대 추천인 아이디'/>
-                        <RadioButton tple='radio' text='참여 이벤트명' />
+                        <RadioButton id='friendEvent' name='event' value='friendEvent' text='친구초대 추천인 아이디'/>
+                        <RadioButton id='othersEvent' name='event' value='othersEvent' text='참여 이벤트명' />
                     </ExtraContainer>
                 </Tr>
                 <BottomLine />
@@ -167,17 +200,17 @@ function SignUp(props) {
                     <List>이용약관동의<Star>*</Star></List>
                     <AgreeContainer>
                         <AgreeAll>
-                            <AgreeButtonImgContainer>
-                                <img src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjREREIj4KICAgICAgICAgICAgPGc+CiAgICAgICAgICAgICAgICA8Zz4KICAgICAgICAgICAgICAgICAgICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNjY5LjAwMDAwMCwgLTEwOTAuMDAwMDAwKSB0cmFuc2xhdGUoMTAwLjAwMDAwMCwgOTM2LjAwMDAwMCkgdHJhbnNsYXRlKDU1My4wMDAwMDAsIDE0Mi4wMDAwMDApIHRyYW5zbGF0ZSgxNi4wMDAwMDAsIDEyLjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgICAgICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMS41Ii8+CiAgICAgICAgICAgICAgICAgICAgICAgIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik03IDEyLjY2N0wxMC4zODUgMTYgMTggOC41Ii8+CiAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K' alt='check-img' />
-                            </AgreeButtonImgContainer>
-                            <AgreeStrong>전체 동의합니다.</AgreeStrong>
+                            <AgreeButtonContainer>
+                                <CheckButton />
+                                <AgreeStrong>전체 동의합니다.</AgreeStrong>
+                            </AgreeButtonContainer>
                         </AgreeAll>
                         <AgreeSmallText>선택항목에 동의하지 않은 경우도 회원가입 및 일반적인 서비스를 이용할 수 있습니다.</AgreeSmallText>
                         <AgreeTr>
                             <AgreeLabel>
-                                <AgreeButtonImgContainer>
-                                    <img src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjREREIj4KICAgICAgICAgICAgPGc+CiAgICAgICAgICAgICAgICA8Zz4KICAgICAgICAgICAgICAgICAgICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNjY5LjAwMDAwMCwgLTEwOTAuMDAwMDAwKSB0cmFuc2xhdGUoMTAwLjAwMDAwMCwgOTM2LjAwMDAwMCkgdHJhbnNsYXRlKDU1My4wMDAwMDAsIDE0Mi4wMDAwMDApIHRyYW5zbGF0ZSgxNi4wMDAwMDAsIDEyLjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgICAgICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMS41Ii8+CiAgICAgICAgICAgICAgICAgICAgICAgIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik03IDEyLjY2N0wxMC4zODUgMTYgMTggOC41Ii8+CiAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K' alt='check-img' />
-                                </AgreeButtonImgContainer>
+                                <AgreeButtonContainer>
+                                    <CheckButton />
+                                </AgreeButtonContainer>
                                 <Text>이용약관 동의</Text>
                                 <GreySapn>(필수)</GreySapn>
                             </AgreeLabel>
@@ -185,9 +218,9 @@ function SignUp(props) {
                         </AgreeTr>
                         <AgreeTr>
                             <AgreeLabel>
-                                <AgreeButtonImgContainer>
-                                    <img src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjREREIj4KICAgICAgICAgICAgPGc+CiAgICAgICAgICAgICAgICA8Zz4KICAgICAgICAgICAgICAgICAgICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNjY5LjAwMDAwMCwgLTEwOTAuMDAwMDAwKSB0cmFuc2xhdGUoMTAwLjAwMDAwMCwgOTM2LjAwMDAwMCkgdHJhbnNsYXRlKDU1My4wMDAwMDAsIDE0Mi4wMDAwMDApIHRyYW5zbGF0ZSgxNi4wMDAwMDAsIDEyLjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgICAgICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMS41Ii8+CiAgICAgICAgICAgICAgICAgICAgICAgIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik03IDEyLjY2N0wxMC4zODUgMTYgMTggOC41Ii8+CiAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K' alt='check-img' />
-                                </AgreeButtonImgContainer>
+                                <AgreeButtonContainer>
+                                    <CheckButton />
+                                </AgreeButtonContainer>
                                 <Text>개인정보 수집∙이용 동의</Text>
                                 <GreySapn>(필수)</GreySapn>
                             </AgreeLabel>
@@ -195,9 +228,9 @@ function SignUp(props) {
                         </AgreeTr>
                         <AgreeTr>
                             <AgreeLabel>
-                                <AgreeButtonImgContainer>
-                                    <img src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjREREIj4KICAgICAgICAgICAgPGc+CiAgICAgICAgICAgICAgICA8Zz4KICAgICAgICAgICAgICAgICAgICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNjY5LjAwMDAwMCwgLTEwOTAuMDAwMDAwKSB0cmFuc2xhdGUoMTAwLjAwMDAwMCwgOTM2LjAwMDAwMCkgdHJhbnNsYXRlKDU1My4wMDAwMDAsIDE0Mi4wMDAwMDApIHRyYW5zbGF0ZSgxNi4wMDAwMDAsIDEyLjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgICAgICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMS41Ii8+CiAgICAgICAgICAgICAgICAgICAgICAgIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik03IDEyLjY2N0wxMC4zODUgMTYgMTggOC41Ii8+CiAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K' alt='check-img' />
-                                </AgreeButtonImgContainer>
+                                <AgreeButtonContainer>
+                                    <CheckButton />
+                                </AgreeButtonContainer>
                                 <Text>개인정보 수집∙이용 동의</Text>
                                 <GreySapn>(선택)</GreySapn>
                             </AgreeLabel>
@@ -205,23 +238,23 @@ function SignUp(props) {
                         </AgreeTr>
                         <AdAgreeTr>
                             <AgreeLabel>
-                                <AgreeButtonImgContainer>
-                                    <img src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjREREIj4KICAgICAgICAgICAgPGc+CiAgICAgICAgICAgICAgICA8Zz4KICAgICAgICAgICAgICAgICAgICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNjY5LjAwMDAwMCwgLTEwOTAuMDAwMDAwKSB0cmFuc2xhdGUoMTAwLjAwMDAwMCwgOTM2LjAwMDAwMCkgdHJhbnNsYXRlKDU1My4wMDAwMDAsIDE0Mi4wMDAwMDApIHRyYW5zbGF0ZSgxNi4wMDAwMDAsIDEyLjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgICAgICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMS41Ii8+CiAgICAgICAgICAgICAgICAgICAgICAgIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik03IDEyLjY2N0wxMC4zODUgMTYgMTggOC41Ii8+CiAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K' alt='check-img' />
-                                </AgreeButtonImgContainer>
+                                <AgreeButtonContainer>
+                                    <CheckButton />
+                                </AgreeButtonContainer>
                                 <Text>무료배송, 할인쿠폰 등 혜택/정보 수신 동의</Text>
                                 <GreySapn>(선택)</GreySapn>
                             </AgreeLabel>
                             <AdAgree>
                                 <AdLabel>
-                                    <AgreeButtonImgContainer>
-                                        <img src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjREREIj4KICAgICAgICAgICAgPGc+CiAgICAgICAgICAgICAgICA8Zz4KICAgICAgICAgICAgICAgICAgICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNjY5LjAwMDAwMCwgLTEwOTAuMDAwMDAwKSB0cmFuc2xhdGUoMTAwLjAwMDAwMCwgOTM2LjAwMDAwMCkgdHJhbnNsYXRlKDU1My4wMDAwMDAsIDE0Mi4wMDAwMDApIHRyYW5zbGF0ZSgxNi4wMDAwMDAsIDEyLjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgICAgICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMS41Ii8+CiAgICAgICAgICAgICAgICAgICAgICAgIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik03IDEyLjY2N0wxMC4zODUgMTYgMTggOC41Ii8+CiAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K' alt='check-img' />
-                                    </AgreeButtonImgContainer>
+                                    <AgreeButtonContainer>
+                                        <CheckButton />
+                                    </AgreeButtonContainer>
                                     SMS
                                 </AdLabel>
                                 <AdLabel>
-                                    <AgreeButtonImgContainer>
-                                        <img src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjREREIj4KICAgICAgICAgICAgPGc+CiAgICAgICAgICAgICAgICA8Zz4KICAgICAgICAgICAgICAgICAgICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNjY5LjAwMDAwMCwgLTEwOTAuMDAwMDAwKSB0cmFuc2xhdGUoMTAwLjAwMDAwMCwgOTM2LjAwMDAwMCkgdHJhbnNsYXRlKDU1My4wMDAwMDAsIDE0Mi4wMDAwMDApIHRyYW5zbGF0ZSgxNi4wMDAwMDAsIDEyLjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgICAgICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMS41Ii8+CiAgICAgICAgICAgICAgICAgICAgICAgIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik03IDEyLjY2N0wxMC4zODUgMTYgMTggOC41Ii8+CiAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K' alt='check-img' />
-                                    </AgreeButtonImgContainer>
+                                    <AgreeButtonContainer>
+                                        <CheckButton />
+                                    </AgreeButtonContainer>
                                     이메일
                                 </AdLabel>
                             </AdAgree>
@@ -231,9 +264,9 @@ function SignUp(props) {
                         </AdAgreeTr>
                         <AgreeTr>
                             <AgreeLabel>
-                                <AgreeButtonImgContainer>
-                                    <img src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjREREIj4KICAgICAgICAgICAgPGc+CiAgICAgICAgICAgICAgICA8Zz4KICAgICAgICAgICAgICAgICAgICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNjY5LjAwMDAwMCwgLTEwOTAuMDAwMDAwKSB0cmFuc2xhdGUoMTAwLjAwMDAwMCwgOTM2LjAwMDAwMCkgdHJhbnNsYXRlKDU1My4wMDAwMDAsIDE0Mi4wMDAwMDApIHRyYW5zbGF0ZSgxNi4wMDAwMDAsIDEyLjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgICAgICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMS41Ii8+CiAgICAgICAgICAgICAgICAgICAgICAgIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik03IDEyLjY2N0wxMC4zODUgMTYgMTggOC41Ii8+CiAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K' alt='check-img' />
-                                </AgreeButtonImgContainer>
+                                <AgreeButtonContainer>
+                                    <CheckButton />
+                                </AgreeButtonContainer>
                                 <Text>본인은 만 14세 이상입니다.</Text>
                                 <GreySapn>(필수)</GreySapn>
                             </AgreeLabel>
@@ -375,8 +408,8 @@ const SmallText = styled.span`
 const Text = styled.span`
     font-size: 14px;
     position: relative;
-    margin-left: 12px;
     color: #333;
+    // margin-left: 12px;
 `
 
 const GenderContainer = styled.div`
@@ -440,6 +473,8 @@ const BottomLine = styled.div`
 `
 
 const AgreeContainer = styled.div`
+    position: relative;
+    left: -3px
 `
 
 const AgreeAll = styled.div`
@@ -455,11 +490,12 @@ const AgreeStrong = styled.strong`
     font-size: 18px;
 `
 
-const AgreeButtonImgContainer = styled.div`
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    margin-right: 12px;
+const AgreeButtonContainer = styled.label`
+    display: flex;
+    // display: inline-block;
+    // width: 24px;
+    // height: 24px;
+    // margin-right: 12px;
 `
 
 const AgreeSmallText = styled.span`
@@ -474,7 +510,7 @@ const AgreeTr = styled.span`
     justify-content: space-between;
     align-items: center;
 `
-const AgreeLabel = styled.div`
+const AgreeLabel = styled.label`
     display: flex;
     align-items: center;
 `
@@ -520,8 +556,9 @@ const AdText = styled.div`
 `
 
 const AgreeSmallTextPurple = styled(AgreeSmallText)`
-    margin-left: 36px;
+    margin-left: 42px;
     padding-left: 16px;
+    padding-top: 0px;
     background: url(https://res.kurly.com/pc/service/common/2006/ico_sub_dot.svg) 0px 0px / 16px 20px no-repeat;
     font-size: 12px;
     color: rgb(95, 0, 128);

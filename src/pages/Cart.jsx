@@ -34,8 +34,7 @@ function Cart( props ) {
             <div className={styles.Body}>
                 <div className={styles.List}>
                     <div className={styles.listLine}>
-                        <input type="checkbox" id="chk" />
-                        <label for="chk"></label>
+                        <CheckButton />
                         전체 선택 <Bar /> 선택삭제
                     </div>
                     <div className={styles.listBody}>
@@ -86,8 +85,7 @@ function Cart( props ) {
                         }
                     </div>
                     <div className={styles.listLine}>
-                        <input type="checkbox" id="chk" />
-                        <label for="chk"></label>
+                        <CheckButton />
                         전체 선택 <Bar /> 선택삭제
                     </div>
                 </div>

@@ -186,7 +186,7 @@
 
 .cartCount{
     position: absolute;
-    right: -4px;
+    /* right: -4px; */
     top: -1px;
     min-width: 15px;
     height: 15px;
@@ -315,7 +315,7 @@
     justify-content: flex-start;
     align-items: center;
     height: 56px;
-    margin: 0px auto;
+    margin: 0px 115px;
 }
 
 .smallHeader .category{
