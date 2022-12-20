@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ProductCard from './ProductCard';
 import styles from './ProductList.module.css';
 import { Swiper, SwiperSlide } from 'swiper/react';

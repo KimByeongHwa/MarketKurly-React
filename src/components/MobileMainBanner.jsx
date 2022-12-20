@@ -1,15 +1,14 @@
 /* eslint-disable */
 import React from 'react';
-import styles from './MainBanner.module.css'
+import { useState, useEffect } from 'react';
+import styles from './MobileMainBanner.module.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation, Autoplay } from 'swiper';
-import 'swiper/css';
-import "swiper/css/navigation";
+import "swiper/css";
 import "swiper/css/pagination";
-import { useState } from 'react';
-import { useEffect } from 'react';
+import "swiper/css/navigation";
 
-function MainBanner(img, alt) {
+function MobileMainBanner(props) {
     const [Images, setImages] = useState([]);
     
     useEffect( () => {
@@ -20,10 +19,9 @@ function MainBanner(img, alt) {
                 setImages(data); // Images에 product.json의 data가 들어간다.
             });
     } ,[])
-    // console.log(Images);
 
     return (
-        <div className={styles.MainBanner}>
+        <div className={styles.MobileMainBanner}>
             <a href="">
                 <Swiper
                     modules={[ Pagination, Navigation, Autoplay]}
@@ -32,9 +30,6 @@ function MainBanner(img, alt) {
                     delay: 3000,
                     disableOnInteraction: false,
                     }}
-                    // pagination={{
-                    //     type: "fraction",
-                    // }}
                     loop={true}
                     loopedSlides = {1} // loop duplicate - 마지막 img에서 넘어갈 때 자연스럽게
                     speed={500}
@@ -55,4 +50,4 @@ function MainBanner(img, alt) {
     );
 }
 
-export default MainBanner;
+export default MobileMainBanner;

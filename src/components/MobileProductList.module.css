@@ -1,0 +1,33 @@
+/* eslint-disable */
+.MobileProductList{
+    width: 95vw;
+    margin: 0px auto;
+    padding: 40px 0px;
+}
+
+.titleLine{
+    margin-bottom: 27px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title{
+    color: rgb(51, 51, 51);
+    font-size: 28px;
+    line-height: 1.15;
+    letter-spacing: -0.26px;
+    font-weight: 500;
+}
+
+.productContainer{
+    position: relative;
+    width: 95vw;
+    margin: 0px auto;
+    display: flex;
+}
+
+.swipeSlide{
+    width: 50px;
+}

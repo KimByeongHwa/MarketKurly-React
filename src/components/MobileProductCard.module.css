@@ -1,17 +1,17 @@
 /* eslint-disable */
-.ProductCard{
+.MobileProductCard{
     color: rgb(51, 51, 51);
     cursor: pointer;
-    width: 249px;
+    width: 240px;
+    margin: 0 auto;
 }
 
 .imgContainer{
     height: 320px;
+    width: 100%;
     overflow: hidden;
     position: relative;
     background-color: rgb(245, 245, 245);
-    width: 100%;
-    height: 100%;
 }
 
 .productImg{

@@ -14,7 +14,7 @@ import Product from './pages/Product.jsx';
 import ScrollToTop from './components/ScrollToTop.jsx';
 import { Mobile, PC } from './mediaquery/MediaQuery.jsx';
 import MobileHeader from './components/MobileHeader.jsx';
-import MobileFooter from './components/MobileFooter.jsx';
+import MobileBottomNav from './components/MobileBottomNav.jsx';
 import MobileHome from './pages/MobileHome.jsx';
 
 function App() {
@@ -41,8 +41,13 @@ function App() {
         <MobileHeader />
           <Routes>
             <Route path='/' element={<MobileHome />} />
+            <Route path='/BeautyHome' element={<BeautyHome />} />
+            <Route path='/SignUp' element={<SignUp />} />
+            <Route path='/SignIn' element={<SignIn />} />
+            <Route path='/Cart' element={<Cart />} />
+            <Route path='/Product/:id' element={<Product />} />
           </Routes>
-        <MobileFooter />
+        <MobileBottomNav />
       </Mobile>
       </BrowserRouter>
     </>

@@ -1,22 +1,27 @@
 .MobileHeader{
     width: 100vw;
+    height: 100px;
+    padding-top: 10px;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 100;
-    border: 1px solid black;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgb(0 0 0 / 7%) 0px 3px 4px 0px;
 }
+
+
 .inner{
-    width: 90vw;
-    margin: 0 auto;
-    position: relative;
-    border: 1px solid green;
+    height: 9vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .top{
-    height: 10vh;
-    display: flex;
-    align-items: center;
+    width: 95vw;
+    margin: 0 auto;
+    position: relative;
 }
 
 .buttonContainer{
@@ -61,4 +66,35 @@
     text-align: center;
     white-space: nowrap;
     font-family: "Noto Sans", "malgun gothic", AppleGothic, dotum, sans-serif;
+}
+
+.bottom{
+    width: 95vw;
+    margin: 0 auto;
+    position: relative;
+}
+
+.Nav{
+    display: flex;
+}
+
+.NavList{
+    display: flex;
+    width: 19vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.NavList > span{
+    height: fit-content;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgb(51, 51, 51);
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+}
+
+.NavList > span:hover{
+    color: rgb(95, 0, 128);
+    border-bottom: 1px solid rgb(95, 0, 128);
 }

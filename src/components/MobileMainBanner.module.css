@@ -1,17 +1,16 @@
-.MainBanner{
-    margin-bottom: 40px;
+.MobileMainBanner{
     width: 100vw;
 }
 
 .bannerContainer{
     cursor: pointer;
-    width: 100%;
-    height: 370px;
+    width: 100vw;
+    height: 200px;
     margin: 0 auto;
 }
 
 .bannerContainer img{
-    width: 100%;
+    width: 100vw;
     height: 100%;
     object-fit: cover;
 }
