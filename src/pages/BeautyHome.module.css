@@ -1,5 +1,27 @@
-.BeautyHome{
+.PCBeautyHome{
     width: 1050px;
+    height: 300px;
     margin: 0 auto;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.MobileBeautyHome{
+    position: relative;
+    margin-top: 110px;
+    width: 100vw;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 40px;
+}
+
+.Ready{
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    color: rgb(181, 181, 181);
 }

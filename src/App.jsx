@@ -16,6 +16,7 @@ import { Mobile, PC } from './mediaquery/MediaQuery.jsx';
 import MobileHeader from './components/MobileHeader.jsx';
 import MobileBottomNav from './components/MobileBottomNav.jsx';
 import MobileHome from './pages/MobileHome.jsx';
+import MobileFooter from './components/MobileFooter.jsx';
 
 function App() {
 
@@ -47,6 +48,7 @@ function App() {
             <Route path='/Cart' element={<Cart />} />
             <Route path='/Product/:id' element={<Product />} />
           </Routes>
+        <MobileFooter />
         <MobileBottomNav />
       </Mobile>
       </BrowserRouter>

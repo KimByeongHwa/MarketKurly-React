@@ -1,7 +1,7 @@
 .MobileBottomNav{
     width: 100vw;
     height: 9vh;
-    position: fixed;
+    position: sticky;
     bottom: 0;
     left: 0;
     z-index: 100;
