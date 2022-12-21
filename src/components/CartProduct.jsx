@@ -1,17 +1,19 @@
 /* eslint-disable */
 import React from 'react';
-import { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { cartsListAtom } from '../recoil/cartsList';
 import styles from './CartProduct.module.css'
 import CheckButton from './CheckButton';
-import QuantityCounter from './QuantityCounter';
 
 // 1. e.target을 통해 현재 아이템의 id를 얻는다. => 걍 cart.id 쓰면 됨.
 // 2. map을 걸어 id검사를 하고, 일치하면 setCartsList를 통해 cart.quantity 변경
 function CartProduct({ cart, getNowQuantity }) {
     const [cartsList, setCartsList] = useRecoilState(cartsListAtom); 
     // console.log(cart);
+
+    // const cartProduct = [...cart];
+    // const cartProduct = cartsList.filter( e => e.id === cart.id)[0];
+    // console.log('cartProduct:',cartProduct);
 
     const PlusQuantity = () => {
         setCartsList( prevCartsList =>{
