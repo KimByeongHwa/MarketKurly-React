@@ -9,32 +9,31 @@ import QuantityCounter from './QuantityCounter';
 
 // 1. e.target을 통해 현재 아이템의 id를 얻는다. => 걍 cart.id 쓰면 됨.
 // 2. map을 걸어 id검사를 하고, 일치하면 setCartsList를 통해 cart.quantity 변경
-function CartProduct({ cart }) {
+function CartProduct({ cart, getNowQuantity }) {
     const [cartsList, setCartsList] = useRecoilState(cartsListAtom); 
-    const [counterQuantity, setCounterQuantity ] = useState(1);
-
     // console.log(cart);
+
     const PlusQuantity = () => {
-        setCounterQuantity(counterQuantity => counterQuantity + 1);
-        setCartsList( prev =>{
-            return prev.map( matchingCart => {
-                if (matchingCart.id === cart.id){
+        setCartsList( prevCartsList =>{
+            return prevCartsList.map( matchingCart => {
+                if (matchingCart.id === cart.id){  
                     return { ...cart, quantity: matchingCart.quantity + 1 };
                 }
             })
-        });
+        }, () => {console.log('비동기 처리 test');});
+        console.log(cart);
     }
-
+    
     const MinusQuantity = () => {
         if (cart.quantity>=2) {
-            setCounterQuantity(counterQuantity => counterQuantity - 1);
-            setCartsList( prev =>{
-                return prev.map( matchingCart => {
+            setCartsList( prevCartsList =>{
+                return prevCartsList.map( matchingCart => {
                     if (matchingCart.id === cart.id){
                         return { ...cart, quantity: matchingCart.quantity - 1 };
                     }
                 })
-            });
+            }, () => {console.log('비동기 처리 test');} );
+            console.log(cart);
         }
         else return;
     }

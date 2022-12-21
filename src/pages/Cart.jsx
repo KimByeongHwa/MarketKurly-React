@@ -16,16 +16,20 @@ function Cart( props ) {
     const getNowQuantity = (changedQuantity) => {
         setNowQuantity(changedQuantity);
     }
+    // console.log(nowQuantity);
+
+
 
     const sumPrice = cartsList.reduce((accumulator, cart) => {
-        // console.log('acc:', accumulator);
-        // console.log('cart.price:', cart.price);
-        // console.log('cart.quantity', cart.quantity);
-        // console.log('1result:', cart.price*cart.quantity);   // cart.quantity 를 state값으로 정의해서 자식에서 변화된 값을 가져와야함. 이를 상단에 있는 getNowQuantity로 구현하였음.
+        //console.log(cart);
+        console.log('acc:', accumulator);
+        console.log('cart.price:', cart.price);
+        console.log('cart.quantity:', cart.quantity);
+        console.log('1 product result:', cart.price*cart.quantity);
+        console.log('sumPrice =', accumulator + (cart.price*cart.quantity));
+        
         return accumulator + (cart.price*cart.quantity);
-    },0)
-
-    // console.log(cart);
+    }, 0)
     
 
     return (
@@ -50,7 +54,7 @@ function Cart( props ) {
                         {cartsList
                             .filter(cart => cart.keep === 'cold')
                             .map((cart) => {
-                                return <CartProduct cart={cart} />
+                                return <CartProduct cart={cart} getNowQuantity={getNowQuantity} />
                             })
                         }
                         <div className={styles.productType}>
@@ -65,7 +69,7 @@ function Cart( props ) {
                         {cartsList
                             .filter(cart => cart.keep === 'freeze')
                             .map((cart) => {
-                                return <CartProduct cart={cart} />
+                                return <CartProduct cart={cart} getNowQuantity={getNowQuantity} />
                             })
                         }
                         <div className={styles.productType}>
@@ -80,7 +84,7 @@ function Cart( props ) {
                         {cartsList
                             .filter(cart => cart.keep === 'normal')
                             .map((cart) => {
-                                return <CartProduct cart={cart} />
+                                return <CartProduct cart={cart} getNowQuantity={getNowQuantity} />
                             })
                         }
                     </div>
