@@ -1,0 +1,22 @@
+[
+    {
+        "id": "1",
+        "src": "https://product-image.kurly.com/cdn-cgi/image/format=auto/banner/main/pc/img/1eef26f1-31a8-410a-b2b6-866ab59d9c93.jpg",
+        "alt": "Main Banner Image"
+    },
+    {
+        "id": "2",
+        "src": "https://product-image.kurly.com/cdn-cgi/image/format=auto/banner/main/pc/img/88b298cf-de5a-4cf9-81d6-5ca180c2b6c5.jpg",
+        "alt": "Main Banner Image"
+    },
+    {
+        "id": "3",
+        "src": "https://product-image.kurly.com/cdn-cgi/image/format=auto/banner/main/pc/img/8f74bcc8-8f8a-410e-8cf3-62828cd5e3d5.jpg",
+        "alt": "Main Banner Image"
+    },
+    {
+        "id": "4",
+        "src": "https://img-cf.kurly.com/cdn-cgi/image/format=auto/banner/main/pc/img/f3dc61b3-068e-433e-a02d-c508a21cd578",
+        "alt": "Main Banner Image"
+    }
+]
