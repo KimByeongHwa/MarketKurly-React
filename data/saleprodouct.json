@@ -1,0 +1,12 @@
+[
+    {
+        "id": "1",
+        "saleTitle": "일일특가" ,
+        "saleDescription": "24시간 한정 특가" ,
+        "src": "https://product-image.kurly.com/product/image/0ef7d689-39f7-4479-b388-7ac330de083a.jpg",
+        "productDescription": "베테랑의 대표메뉴를 집에서",
+        "productName": "전주 베테랑 칼국수 2개입",
+        "saleRate": 30,
+        "originalPrice": 11600
+    }
+]
