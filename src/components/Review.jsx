@@ -35,7 +35,6 @@ function Review(props) {
           spaceBetween={18}
           modules={[Navigation, Pagination]}
           navigation={true}
-          // observer={true}
         >
           <div className={styles.listContainer}>
             {reviews.map((review) => {
