@@ -4,6 +4,8 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import CheckButton from '../components/CheckButton';
 import RadioButton from '../components/RadioButton';
+import Swal from 'sweetalert2';
+import { useEffect } from 'react';
 
 function SignUp(props) {
     const [id, setId] = useState('');
@@ -16,14 +18,12 @@ function SignUp(props) {
     const [idMessage, setIdMessage] = useState('');
     const [passwordMessage, setPasswordMessage] = useState('');
     const [passwordConfirmMessage, setPasswordConfirmMessage] = useState('');
-    const [nameMessage, setNameMessage] = useState('');
     const [emailMessage, setEmailMessage] = useState('');
     const [phoneNumberMessage, setPhoneNumberMessage] = useState('');
 
     const [isId, setIsId] = useState(false);
     const [isPassword, setIsPassword] = useState(false);
     const [isPasswordConfirm, setIsPasswordConfrim] = useState(false);
-    const [isName, setIsName] = useState(false);
     const [isEmail, setIsEmail] = useState(false);
     const [isPhoneNumber, setIsPhoneNumber] = useState(false);
 
@@ -103,6 +103,20 @@ function SignUp(props) {
 
         // console.log(currentPhoneNumber);
         // console.log(isPhoneNumber);
+    }
+
+    const handleClickSignUp = () => {
+        if( isId && isPassword && isPasswordConfirm && isEmail && isPhoneNumber){
+            console.log('good')
+        }
+        else {
+            Swal.fire({
+                text: '회원정보를 정확히 입력해주세요.',
+                confirmButtonText: '확인',
+                confirmButtonColor: 'rgb(95, 0, 128)'
+            });
+        }
+
     }
 
     return (
@@ -274,7 +288,7 @@ function SignUp(props) {
                     </AgreeContainer>
                 </Tr>
                 <SingUpButtonContainer>
-                    <SignUpButton><span>가입하기</span></SignUpButton>
+                    <SignUpButton onClick={handleClickSignUp}><span>가입하기</span></SignUpButton>
                 </SingUpButtonContainer>
             </Inner>
         </SignUpSection>

@@ -6,7 +6,7 @@
 }
 
 .titleLine{
-    margin-bottom: 27px;
+    /* margin-bottom: 27px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -28,7 +28,10 @@
     display: flex;
 }
 
-/* .swiper-button-prev{
+
+
+
+/* .buttonPrev{
     position: absolute;
     z-index: 100;
     border: 0px;

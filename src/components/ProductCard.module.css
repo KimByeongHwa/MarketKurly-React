@@ -3,6 +3,8 @@
     color: rgb(51, 51, 51);
     cursor: pointer;
     width: 249px;
+    position: relative;
+    top: 50px;
 }
 
 .imgContainer{
