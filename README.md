@@ -30,7 +30,6 @@ Front-End 개발을 처음 공부할 때 만든 마켓컬리 클론 웹입니다
 ### 2. 장바구니
 : 장바구니를 관리할 배열 `cartsList` 선언하여 Recoil을 통해 관리
 
-
 #### 2-1. 상품 추가
 : 상품을 추가하면 장바구니에 해당 상품이 추가됨과 동시에, 상단 헤더의 장바구니 상품 갯수가 변경
   
@@ -43,6 +42,7 @@ Front-End 개발을 처음 공부할 때 만든 마켓컬리 클론 웹입니다
 
 <img width="960" alt="장바구니" src="https://github.com/KimByeongHwa/MarketKurly-React/assets/97048179/70499c60-3796-4dd6-acea-b4ba8f897c66">
 
+<br>
 <br>
 
 #### 2-3. 상품 삭제
