@@ -7,7 +7,6 @@ Front-End 개발을 처음 공부할 때 만든 마켓컬리 클론 웹입니다
 
 ## 📚 사용 라이브러리
 - recoil
-- axios
 - swiper
 - sweetalert2
 - react-respoinsive
