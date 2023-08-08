@@ -1,5 +1,5 @@
 # MarketKurly-React
-Front-End 개발을 처음 공부할 때 만든 마켓컬리 클론 웹입니다.
+마켓컬리 클론 웹사이트입니다.
 
 <br>
 <br>
